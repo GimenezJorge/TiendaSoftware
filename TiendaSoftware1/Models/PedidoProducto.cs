@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TiendaSoftware.Models;
+namespace TiendaSoftware1.Models;
 
 public partial class PedidoProducto
 {
