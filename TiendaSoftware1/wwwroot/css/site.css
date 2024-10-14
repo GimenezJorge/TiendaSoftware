@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+
 html {
   font-size: 14px;
 }
@@ -18,5 +21,106 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600; /* para títulos más gruesos */
+}
+
+p, a, li {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400; /* para texto normal */
+}
+
+
+
+
+/* Estilo para la sección */
+.seccion {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.seccion-titulo {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Estilo para cada juego */
+.game {
+    position: relative;
+    width: 220px;
+    margin: 15px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+    .game img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    /* Efecto hover sobre la imagen */
+    .game:hover img {
+        transform: scale(1.05);
+    }
+
+/* Título dentro de la imagen */
+.game-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Contenedor de los juegos en filas */
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+
+.row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.form-wrapper {
+    /* Permite que el formulario no se vea afectado por flexbox */
+    display: block; /* Asegura que el formulario ocupe su tamaño natural */
+    width: 100%; /* O un ancho específico si lo deseas */
+    max-width: 400px; /* Ancho máximo para el formulario */
+    margin: 0 auto; /* Centrar el formulario dentro de su columna */
+}
+form {
+    width: 100%; /* Asegúrate de que el formulario use todo el ancho disponible */
+}
+
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    transform:translate(330px, 10px);
+    width:230px;
 }

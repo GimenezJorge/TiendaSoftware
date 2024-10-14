@@ -33,6 +33,8 @@ public partial class Bdg3Context : DbContext
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
+    public virtual DbSet<UsuarioDetalle> UsuarioDetalles { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=DESKTOP-HLAD5ES\\SQLEXPRESS;Initial Catalog=bdg3;Integrated Security=True;Encrypt=True;TrustServerCertificate=True;");
@@ -220,18 +222,10 @@ public partial class Bdg3Context : DbContext
             entity.HasIndex(e => e.Email, "UQ__usuarios__AB6E6164A8D526C0").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Direccion)
-                .HasMaxLength(255)
-                .IsUnicode(false)
-                .HasColumnName("direccion");
             entity.Property(e => e.Email)
                 .HasMaxLength(150)
                 .IsUnicode(false)
                 .HasColumnName("email");
-            entity.Property(e => e.FechaCreacion)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime")
-                .HasColumnName("fecha_creacion");
             entity.Property(e => e.Nombre)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -240,16 +234,37 @@ public partial class Bdg3Context : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("password");
-            entity.Property(e => e.RolId).HasColumnName("rol_id");
-            entity.Property(e => e.Telefono)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("telefono");
+            entity.Property(e => e.RolId)
+                .HasDefaultValue(1)
+                .HasColumnName("rol_id");
 
             entity.HasOne(d => d.Rol).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.RolId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__usuarios__rol_id__3B75D760");
+        });
+
+        modelBuilder.Entity<UsuarioDetalle>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__usuario___3213E83FD681C21F");
+
+            entity.ToTable("usuario_detalles");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Direccion)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("direccion");
+            entity.Property(e => e.Telefono)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("telefono");
+            entity.Property(e => e.UsuarioId).HasColumnName("usuario_id");
+
+            entity.HasOne(d => d.Usuario).WithMany(p => p.UsuarioDetalles)
+                .HasForeignKey(d => d.UsuarioId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__usuario_d__usuar__03F0984C");
         });
 
         OnModelCreatingPartial(modelBuilder);

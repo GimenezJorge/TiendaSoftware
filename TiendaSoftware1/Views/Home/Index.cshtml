@@ -1,46 +1,91 @@
-﻿@model IEnumerable<TiendaSoftware1.Models.Usuario>
+﻿@model IEnumerable<TiendaSoftware1.Models.Producto>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Productos";
 }
 
-<h1>Index</h1>
+<h1>Productos</h1>
+
+<div class="seccion">
+    <h2 class="seccion-titulo">Trending Gift Cards</h2>
+    <div id="main-container" class="container">
+        <div class="row">
+            <div class="game">
+                <a asp-controller="Productos" asp-action="DetailsProductos" asp-route-id="1">
+                    <img src="/assets/ph_play.png" alt="Play Station" />
+                    <div class="game-title">Play Station</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="/DetailsProductos/2">
+                    <img src="/assets/ph_riot.png" alt="Riot" />
+                    <div class="game-title">Riot</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="/DetailsProductos/3">
+                    <img src="/assets/ph_steam.png" alt="Steam" />
+                    <div class="game-title">Steam</div>
+                </a>
+            </div>
+            <div class="game">
+                <a href="/DetailsProductos/4">
+                    <img src="/assets/ph_xbox.png" alt="Xbox" />
+                    <div class="game-title">Xbox</div>
+                </a>
+            </div>
+        </div>
+</div>
 
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.First().Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().Password)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Password)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
+
+
+    <div class="row">
+        <div class="game">
+            <a href="/DetalleJuego/5">
+                <img src="/images/juego5.jpg" alt="Juego 5" />
+            </a>
+            <p>Juego 5</p>
+        </div>
+        <div class="game">
+            <a href="/DetalleJuego/6">
+                <img src="/images/juego6.jpg" alt="Juego 6" />
+            </a>
+            <p>Juego 6</p>
+        </div>
+        <div class="game">
+            <a href="/DetalleJuego/7">
+                <img src="/images/juego7.jpg" alt="Juego 7" />
+            </a>
+            <p>Juego 7</p>
+        </div>
+        <div class="game">
+            <a href="/DetalleJuego/8">
+                <img src="/images/juego8.jpg" alt="Juego 8" />
+            </a>
+            <p>Juego 8</p>
+        </div>
+    </div>
+</div>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div id="success-message" class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<script>
+    setTimeout(function () {
+        var successMessage = document.getElementById('success-message');
+        if (successMessage) {
+            successMessage.style.transition = "opacity 1s ease";
+            successMessage.style.opacity = "0";
+
+            // lo eliminamos del DOM
+            setTimeout(function () {
+                successMessage.remove();
+            }, 1000); // Espera el tiempo de la transición (1 segundo)
         }
-    </tbody>
-</table>
+    }, 5000); // 5000 milisegundos = 5 segundos
+</script>
