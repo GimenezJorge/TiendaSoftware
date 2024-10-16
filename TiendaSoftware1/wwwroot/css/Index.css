@@ -1,91 +1,64 @@
-/* index.css */
-
-/* Estilo general del cuerpo */
+/* Estilos generales::: */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #8B0000, #FF6347); /* Gradiente de rojo oscuro a rojo claro */
     margin: 0;
-    padding: 0; /* Eliminar el padding del body */
+    padding: 0;
+    background-color: #FFFDEE; /* Color de fondo */
 }
 
-/* Barra de navegación */
-nav {
-    background-color: #4B0000; /* Gris oscuro para la barra de navegación */
-    color: white; /* Texto blanco para contraste */
-    padding: 10px; /* Espaciado interno */
-    position: relative; /* Asegura que permanezca en su lugar */
-    z-index: 1000; /* Mantiene la barra de navegación por encima de otros elementos */
-}
-
-    /* Estilos de enlaces en la barra de navegación */
-    nav a {
-        color: white; /* Color blanco para los enlaces */
-        text-decoration: none; /* Sin subrayado */
-        margin: 0 15px; /* Espaciado entre enlaces */
-    }
-
-        nav a:hover {
-            text-decoration: underline; /* Subrayado al pasar el mouse */
-        }
-
-/* Resto de estilos... */
-
-/* Títulos de sección */
+/* Estilos para secciones */
 .seccion {
-    margin-bottom: 20px;
+    padding: 20px; /* Espaciado en la sección */
 }
 
 .seccion-titulo {
-    font-size: 24px;
-    color: #333; /* Color del texto */
-    margin-bottom: 10px;
+    font-size: 24px; /* Tamaño del título de la sección */
 }
 
-/* Contenedor principal */
+/* Estilos para el contenedor principal */
 #main-container {
-    max-width: 1200px; /* Ancho máximo */
-    margin: 0 auto; /* Centrar */
-    padding: 10px;
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin: auto; /* Centrar contenedor */
 }
 
-/* Estilo de las filas de juegos */
 .row {
-    display: flex;
-    flex-wrap: wrap; /* Permitir que las tarjetas se envuelvan */
-    justify-content: space-between; /* Espacio entre tarjetas */
+    display: flex; /* Flexbox para disposición de elementos */
+    justify-content: space-between; /* Espacio entre elementos */
 }
 
-/* Estilo de cada juego */
+/* Estilos para los juegos */
 .game {
-    background-color: #fff; /* Fondo blanco para cada tarjeta */
-    border: 1px solid #ddd; /* Borde ligero */
-    border-radius: 5px; /* Bordes redondeados */
-    margin: 10px; /* Espaciado entre tarjetas */
-    padding: 10px; /* Espaciado interno */
-    width: 200px; /* Ancho fijo */
+    flex: 1; /* Cada juego ocupa el mismo espacio */
+    margin: 10px; /* Espaciado entre juegos */
     text-align: center; /* Centrar texto */
-    transition: transform 0.3s, box-shadow 0.3s; /* Transición suave para efectos */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    overflow: hidden; /* Ocultar el desbordamiento */
+    border-radius: 15px; /* Bordes redondeados siempre en el contenedor */
+    transition: transform 0.1s ease; /* Transición rápida para el contenedor */
 }
+
+    .game img {
+        max-width: 100%; /* Ajustar imagen al contenedor */
+        height: auto; /* Mantener la proporción de la imagen */
+        transition: transform 0.1s ease, border-radius 0.1s ease; /* Transición rápida para la imagen */
+        border-radius: 15px; /* Bordes redondeados para la imagen */
+    }
 
     .game:hover {
-        transform: scale(1.05); /* Efecto al pasar el mouse */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el mouse */
+        transform: scale(1.1); /* Aumenta el tamaño del contenedor al 110% */
     }
 
-    /* Estilo de las imágenes */
-    .game img {
-        max-width: 100%; /* Hacer que la imagen sea responsiva */
-        height: auto; /* Mantener la proporción */
-        border-radius: 5px; /* Bordes redondeados para imágenes */
+    .game img:hover {
+        transform: scale(1.1); /* Aumenta el tamaño de la imagen al 110% */
+        border-radius: 15px; /* Mantiene los bordes redondeados de 15px al agrandarse */
     }
 
-/* Estilo de los mensajes de éxito */
-#success-message {
-    margin: 20px 0;
-    padding: 15px;
-    border: 1px solid green;
-    background-color: #e6ffed; /* Fondo verde claro */
-    color: green;
-    border-radius: 5px; /* Bordes redondeados */
+/* Estilos para mensajes de éxito */
+.alert {
+    padding: 15px; /* Espaciado en el mensaje */
+    margin-top: 20px; /* Espaciado superior */
+}
+
+.alert-success {
+    background-color: #4CAF50; /* Color de fondo para el mensaje de éxito */
+    color: white; /* Color de texto blanco */
 }
