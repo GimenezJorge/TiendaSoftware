@@ -1,0 +1,91 @@
+/* index.css */
+
+/* Estilo general del cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #8B0000, #FF6347); /* Gradiente de rojo oscuro a rojo claro */
+    margin: 0;
+    padding: 0; /* Eliminar el padding del body */
+}
+
+/* Barra de navegación */
+nav {
+    background-color: #4B0000; /* Gris oscuro para la barra de navegación */
+    color: white; /* Texto blanco para contraste */
+    padding: 10px; /* Espaciado interno */
+    position: relative; /* Asegura que permanezca en su lugar */
+    z-index: 1000; /* Mantiene la barra de navegación por encima de otros elementos */
+}
+
+    /* Estilos de enlaces en la barra de navegación */
+    nav a {
+        color: white; /* Color blanco para los enlaces */
+        text-decoration: none; /* Sin subrayado */
+        margin: 0 15px; /* Espaciado entre enlaces */
+    }
+
+        nav a:hover {
+            text-decoration: underline; /* Subrayado al pasar el mouse */
+        }
+
+/* Resto de estilos... */
+
+/* Títulos de sección */
+.seccion {
+    margin-bottom: 20px;
+}
+
+.seccion-titulo {
+    font-size: 24px;
+    color: #333; /* Color del texto */
+    margin-bottom: 10px;
+}
+
+/* Contenedor principal */
+#main-container {
+    max-width: 1200px; /* Ancho máximo */
+    margin: 0 auto; /* Centrar */
+    padding: 10px;
+}
+
+/* Estilo de las filas de juegos */
+.row {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que las tarjetas se envuelvan */
+    justify-content: space-between; /* Espacio entre tarjetas */
+}
+
+/* Estilo de cada juego */
+.game {
+    background-color: #fff; /* Fondo blanco para cada tarjeta */
+    border: 1px solid #ddd; /* Borde ligero */
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 10px; /* Espaciado entre tarjetas */
+    padding: 10px; /* Espaciado interno */
+    width: 200px; /* Ancho fijo */
+    text-align: center; /* Centrar texto */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transición suave para efectos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+    .game:hover {
+        transform: scale(1.05); /* Efecto al pasar el mouse */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el mouse */
+    }
+
+    /* Estilo de las imágenes */
+    .game img {
+        max-width: 100%; /* Hacer que la imagen sea responsiva */
+        height: auto; /* Mantener la proporción */
+        border-radius: 5px; /* Bordes redondeados para imágenes */
+    }
+
+/* Estilo de los mensajes de éxito */
+#success-message {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid green;
+    background-color: #e6ffed; /* Fondo verde claro */
+    color: green;
+    border-radius: 5px; /* Bordes redondeados */
+}
