@@ -1,0 +1,64 @@
+﻿/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFDEE; /* Color de fondo */
+}
+
+/* Estilos para secciones */
+.seccion {
+    padding: 20px; /* Espaciado en la sección */
+}
+
+.seccion-titulo {
+    font-size: 24px; /* Tamaño del título de la sección */
+}
+
+/* Estilos para el contenedor principal */
+#main-container {
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin: auto; /* Centrar contenedor */
+}
+
+.row {
+    display: flex; /* Flexbox para disposición de elementos */
+    justify-content: space-between; /* Espacio entre elementos */
+}
+
+/* Estilos para los juegos */
+.game {
+    flex: 1; /* Cada juego ocupa el mismo espacio */
+    margin: 10px; /* Espaciado entre juegos */
+    text-align: center; /* Centrar texto */
+    overflow: hidden; /* Ocultar el desbordamiento */
+    border-radius: 15px; /* Bordes redondeados siempre en el contenedor */
+    transition: transform 0.1s ease; /* Transición rápida para el contenedor */
+}
+
+    .game img {
+        max-width: 100%; /* Ajustar imagen al contenedor */
+        height: auto; /* Mantener la proporción de la imagen */
+        transition: transform 0.1s ease, border-radius 0.1s ease; /* Transición rápida para la imagen */
+        border-radius: 0px; /* Bordes redondeados para la imagen */
+    }
+
+    .game:hover {
+        transform: scale(1.1); /* Aumenta el tamaño del contenedor al 110% */
+    }
+
+    .game img:hover {
+        transform: scale(1.1); /* Aumenta el tamaño de la imagen al 110% */
+        border-radius: 0px; /* Mantiene los bordes redondeados de 15px al agrandarse */
+    }
+
+/* Estilos para mensajes de éxito */
+.alert {
+    padding: 15px; /* Espaciado en el mensaje */
+    margin-top: 20px; /* Espaciado superior */
+}
+
+.alert-success {
+    background-color: #4CAF50; /* Color de fondo para el mensaje de éxito */
+    color: white; /* Color de texto blanco */
+}
