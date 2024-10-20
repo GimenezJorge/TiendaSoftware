@@ -4,6 +4,11 @@ body {
     margin: 0;
     padding: 0;
     background-color: #FFFDEE; /* Color de fondo */
+    background-image: url('/assets/imagenfondo.png'); /* Imagen de fondo */
+    background-size: cover; /* Ajusta la imagen al tamaño de la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    min-height: 100vh; /* Asegura que cubra el 100% de la altura de la ventana */
 }
 
 /* Estilos para secciones */
