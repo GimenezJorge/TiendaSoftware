@@ -22,7 +22,7 @@
     text-align: center; /* Centrar texto */
     overflow: hidden; /* Ocultar el desbordamiento */
     border-radius: 15px; /* Bordes redondeados siempre en el contenedor */
-    transition: transform 0.1s ease; /* Transición rápida para el contenedor */
+    transition: transform 0.05s ease; /* Transición rápida para el contenedor */
 }
 
     /* Margen superior para las imágenes de la segunda fila */
@@ -40,7 +40,14 @@
     .game:hover {
         transform: scale(1.1); /* Aumenta el tamaño del contenedor al 110% */
     }
-
+    .game-title {
+        color: gold;
+        font-weight: bold;
+        text-shadow: 3px 3px 1px rgba(0, 0, 0, 1);
+        transform: rotate(-10deg);
+        margin-bottom: 10px;
+        font-size: 1.5vw; /* Ajusta este tamaño según lo que necesites */
+    }
     .game img:hover {
         transform: scale(1.1); /* Aumenta el tamaño de la imagen al 110% */
         border-radius: 15px; /* Mantiene los bordes redondeados de 15px al agrandarse */
