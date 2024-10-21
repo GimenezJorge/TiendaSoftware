@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TiendaSoftware1.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/_layout.css" asp-append-version="true" />
     <link rel="icon" href="~/assets/SIN_FONDO.png" type="image/x-icon" />
     @RenderSection("Styles", required: false) <!-- Sección para estilos específicos -->
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light" style="background: linear-gradient(to right, #A00000, #FF0000); height: 90px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); margin-bottom: 20px; padding-top: 20px;">
+        <nav class="navbar navbar-expand-sm navbar-light">
             <div class="container-fluid d-flex align-items-center">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/assets/SIN_FONDO.png" alt="Logo" style="height: 150px; width: auto; margin-left: -30px; margin-top: 25px;">
+                    <img src="~/assets/SIN_FONDO.png" alt="Logo" style="height: 150px; width: auto; margin-left: 30px; margin-top: 65px;">                    
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -30,27 +31,28 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
+                        <img src="~/assets/tipito_ninja.png" alt="Logo" style="height: 150px; width: auto; margin-left: 30px; margin-top: 0px;">
                         @if (Context.Session.GetString("email") != null)
                         {
-                            <li class="nav-item">
-                                <span class="nav-link" style="color: white; font-weight: bold;">
-                                    <strong>@Context.Session.GetString("nombre")</strong>
-                                    <br />
-                                    <small>@Context.Session.GetString("email")</small>
-                                </span>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-action="Logout" asp-controller="Home" style="color: white; font-weight: bold;">Logout</a>
-                            </li>
+                                    <li class="nav-item">
+                                        <span class="nav-link" style="color: white; font-weight: bold;">
+                                            <strong>@Context.Session.GetString("nombre")</strong>
+                                            <br />
+                                            <small>@Context.Session.GetString("email")</small>
+                                        </span>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-action="Logout" asp-controller="Home" style="color: white; font-weight: bold;">Logout</a>
+                                    </li>
                         }
                         else
                         {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Signup" style="color: white; font-weight: bold;">Sign Up</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login" style="color: white; font-weight: bold;">Login</a>
-                            </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Signup" style="color: white; font-weight: bold;">Sign Up</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login" style="color: white; font-weight: bold;">Login</a>
+                                    </li>
                         }
                     </ul>
                 </div>
@@ -63,11 +65,14 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <div style="height: 50px;"></div> <!-- Espacio vacío para separar el footer -->
+
+    <footer>
         <div class="container">
-            &copy; 2024 - TiendaSoftware1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2024 - TiendaSoftware1 - <a asp-area="" asp-controller="Home" asp-action="Privacy" style="color: white;">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
