@@ -1,10 +1,5 @@
-/* Estilos generales:: */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #FFFDEE; /* Color de fondo */
-}
+/* Estilos generales */
+
 
 /* Estilos para secciones */
 .seccion {
@@ -17,27 +12,26 @@ body {
 
 /* Estilos para el contenedor principal */
 #main-container {
-    max-width: 1200px; /* Ancho máximo del contenedor */
+    max-width: 1000px; /* Ancho máximo del contenedor */
     margin: auto; /* Centrar contenedor */
 }
 
-.row {
-    display: flex; /* Flexbox para disposición de elementos */
-    justify-content: space-between; /* Espacio entre elementos */
-}
-
-/* Estilos para los juegos */
 .game {
-    flex: 1; /* Cada juego ocupa el mismo espacio */
-    margin: 10px; /* Espaciado entre juegos */
+    flex: 1 0 21%; /* Cada juego ocupa espacio del 21% */
+    margin: 0; /* Sin margen entre juegos */
     text-align: center; /* Centrar texto */
     overflow: hidden; /* Ocultar el desbordamiento */
     border-radius: 15px; /* Bordes redondeados siempre en el contenedor */
-    transition: transform 0.1s ease; /* Transición rápida para el contenedor */
+    transition: transform 0.05s ease; /* Transición rápida para el contenedor */
 }
 
+    /* Margen superior para las imágenes de la segunda fila */
+    .game:nth-child(n+5) {
+        margin-top: 30px; /* Margen superior de 50px */
+    }
+
     .game img {
-        max-width: 100%; /* Ajustar imagen al contenedor */
+        max-width: 200px; /* Establece un ancho máximo de 200 píxeles */
         height: auto; /* Mantener la proporción de la imagen */
         transition: transform 0.1s ease, border-radius 0.1s ease; /* Transición rápida para la imagen */
         border-radius: 15px; /* Bordes redondeados para la imagen */
@@ -46,7 +40,14 @@ body {
     .game:hover {
         transform: scale(1.1); /* Aumenta el tamaño del contenedor al 110% */
     }
-
+    .game-title {
+        color: gold;
+        font-weight: bold;
+        text-shadow: 3px 3px 1px rgba(0, 0, 0, 1);
+        transform: rotate(-10deg);
+        margin-bottom: 10px;
+        font-size: 1.5vw; /* Ajusta este tamaño según lo que necesites */
+    }
     .game img:hover {
         transform: scale(1.1); /* Aumenta el tamaño de la imagen al 110% */
         border-radius: 15px; /* Mantiene los bordes redondeados de 15px al agrandarse */
