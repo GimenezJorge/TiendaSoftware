@@ -1,45 +1,50 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Garamond', serif; /* Cambia a una fuente más clásica y elegante */    
     margin: 0;
     padding: 0;
-    background-image: url('/assets/imagenfondo.png'); /* Imagen de fondo */
-    background-size: cover; /* Ajusta la imagen al tamaño de la pantalla */
-    background-position: bottom; /* Muestra la parte inferior de la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    padding-bottom: 50px; /* Añadir espacio en la parte inferior del body */
-    min-height: 100vh; /* Asegura que el body ocupe toda la altura de la pantalla */
+    background-color: #DEC59B;
+    background-image: url('/assets/imagenfondo.png');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding-bottom: 50px;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* Estilos para la navbar */
 .navbar {
-    background: linear-gradient(to right, #A00000, #FF0000); /* Color de fondo */
-    height: 140px; /* Altura de la navbar */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra de la navbar */
-    margin-bottom: 20px; /* Margen inferior de la navbar */
-    padding-top: 20px; /* Padding superior de la navbar */
-    border: none; /* Quitar el borde superior */
+    background: linear-gradient(to right, #2b5a4a, #ab8d59); /* Verde profundo al dorado claro */
+    height: 140px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    padding-top: 20px;
+    border: none;
 }
 
-/* Estilos para los enlaces en la navbar */
 .nav-link {
-    color: white; /* Color del texto de los enlaces */
-    font-weight: bold; /* Negrita para el texto */
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra con desplazamiento */
+    /*font-weight: bold;*/
+    font-family: 'Times New Roman', Times, serif !important;
+    font-size: 24px;
 }
 
     .nav-link:hover {
-        color: #FFCCCC; /* Color del texto al pasar el ratón sobre el enlace (opcional) */
+        text-decoration: underline; /* Si quieres algún estilo hover */
+        color: #ffcccc; /* Un color claro, pero podrías ajustarlo si prefieres algo más acorde */
     }
 
-/* Estilos para el footer fijo */
+    
+
 footer {
-    padding: 0px; /* Espacio interno opcional */
-    text-align: center; /* Centrar texto en el footer */
-    background: #A00000; /* Mismo color de fondo que la navbar */
-    color: white; /* Color del texto en el footer */
-    border-top: none; /* Elimina cualquier borde superior */
-    position: fixed; /* Fija el footer en la parte inferior */
-    bottom: 0; /* Alinea el footer al fondo */
-    width: 100%; /* Asegura que el footer ocupe todo el ancho de la pantalla */
+    font-family: "Times New Roman", Times, serif;
+    padding: 0px;
+    text-align: center;
+    background: #2b5a4a; /* Verde profundo */
+    color: #c7b9b9; /* Gris claro */
+    border-top: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

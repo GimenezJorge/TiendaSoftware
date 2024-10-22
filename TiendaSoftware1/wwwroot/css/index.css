@@ -1,5 +1,8 @@
 /* Estilos generales */
 /* prueba */
+* {
+    border-radius: 0 !important;
+}
 
 /* Estilos para secciones */
 .seccion {
@@ -17,12 +20,12 @@
 }
 
 .game {
-    flex: 1 0 21%; /* Cada juego ocupa espacio del 21% */
+    flex: 1 0 19%; /* Cada juego ocupa espacio del 21% */
     margin: 0; /* Sin margen entre juegos */
     text-align: center; /* Centrar texto */
     overflow: hidden; /* Ocultar el desbordamiento */
-    border-radius: 15px; /* Bordes redondeados siempre en el contenedor */
-    transition: transform 0.05s ease; /* Transición rápida para el contenedor */
+    transition: transform 0.2s ease; /* Transición más rápida para el contenedor */
+    border-radius: 150px !important; /* Bordes redondeados por defecto */
 }
 
     /* Margen superior para las imágenes de la segunda fila */
@@ -33,25 +36,28 @@
     .game img {
         max-width: 200px; /* Establece un ancho máximo de 200 píxeles */
         height: auto; /* Mantener la proporción de la imagen */
-        transition: transform 0.1s ease, border-radius 0.1s ease; /* Transición rápida para la imagen */
-        border-radius: 15px; /* Bordes redondeados para la imagen */
+        transition: transform 0.1s ease !important; /* Transición más lenta para la imagen */        
+        /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Sombra más notoria y más baja */
+    }
+
+    .game:hover img {
+        transform: scale(1.06); /* Aumenta el tamaño de la imagen al 106% */
+        border-radius: 0; /* Elimina el redondeado al aumentar */
+        /*box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Sombra más intensa al hacer hover */
     }
 
     .game:hover {
-        transform: scale(1.1); /* Aumenta el tamaño del contenedor al 110% */
+        transform: scale(1.02); /* Aumenta el tamaño del contenedor al 102% */
     }
-    .game-title {
-        color: gold;
-        font-weight: bold;
-        text-shadow: 3px 3px 1px rgba(0, 0, 0, 1);
-        transform: rotate(-10deg);
-        margin-bottom: 10px;
-        font-size: 1.5vw; /* Ajusta este tamaño según lo que necesites */
-    }
-    .game img:hover {
-        transform: scale(1.1); /* Aumenta el tamaño de la imagen al 110% */
-        border-radius: 15px; /* Mantiene los bordes redondeados de 15px al agrandarse */
-    }
+
+.game-title {
+    color: gold;
+    font-weight: bold;
+    text-shadow: 3px 3px 1px rgba(0, 0, 0, 1);
+    transform: rotate(-10deg);
+    margin-bottom: 10px;
+    font-size: 1.5vw; /* Ajusta este tamaño según lo que necesites */
+}
 
 /* Estilos para mensajes de éxito */
 .alert {
