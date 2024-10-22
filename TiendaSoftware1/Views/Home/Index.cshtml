@@ -9,10 +9,30 @@
 </head>
 
 <body>
-    <h1>HOLA</h1>
+    <!-- Dentro de Index.cshtml -->
+    <div class="carousel">
+        <div class="slides">
+            <img src="/assets/imagen1.png" class="active">
+            <img src="/assets/imagen2.png">
+            <img src="/assets/imagen3.png">
+        </div>
+        <div class="dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </div>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="/js/carousel.js"></script>
+
+
+
+    <!--<h1>HOLA</h1>-->
 
     <div class="seccion">
-        <h2 class="seccion-titulo">chau</h2>
+        <!--<h2 class="seccion-titulo">chau</h2>-->
+
         <div id="main-container" class="container">
             <div class="row">
                 <div class="game">
@@ -89,4 +109,6 @@
             }
         }, 5000); // 5000 milisegundos = 5 segundos
     </script>
+
+
 </body>

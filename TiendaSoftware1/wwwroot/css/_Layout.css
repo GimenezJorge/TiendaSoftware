@@ -23,11 +23,12 @@ body {
 }
 
 .navbar-brand img {
-    transition: box-shadow 0.3s ease; /* Agrega una transición suave */
+    transition: filter 0.1s ease; /* Agrega una transición suave al brillo */
 }
 
     .navbar-brand img:hover {
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra al hacer hover */
+        /*filter: brightness(1.5); /* Aumenta el brillo al hacer hover */
+        filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.8)); /* Agrega una sombra */
     }
 
 .nav-link {
@@ -39,8 +40,7 @@ body {
 }
 
     .nav-link:hover {
-        text-decoration: underline; /* Si quieres algún estilo hover */
-        color: #ffcccc; /* Un color claro, pero podrías ajustarlo si prefieres algo más acorde */
+        color: #FFD700 !important; /* Amarillo dorado */
     }
 
 footer {
@@ -58,7 +58,7 @@ footer {
 .user-info {
     display: flex;
     flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
-    align-items: center; /* Centra el texto horizontalmente */
+    align-items: flex-end; /* Centra el texto horizontalmente */
     color: white; /* Ajusta el color del texto según sea necesario */
 }
 
@@ -66,7 +66,7 @@ footer {
 .logout {
     margin-top: 5px; /* Espaciado entre los datos del usuario y el logout */
     font-size: 20px; /* Tamaño de la fuente para el logout */
-    color: #ffcccc; /* Color del texto del logout */
+    color: #ffcccc !important; /* Color del texto del logout */
 }
 
 .user-details {

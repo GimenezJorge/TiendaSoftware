@@ -25,12 +25,12 @@
     text-align: center; /* Centrar texto */
     overflow: hidden; /* Ocultar el desbordamiento */
     transition: transform 0.2s ease; /* Transición más rápida para el contenedor */
-    border-radius: 150px !important; /* Bordes redondeados por defecto */
+    border-radius: 110px !important; /* Bordes redondeados por defecto */
 }
 
     /* Margen superior para las imágenes de la segunda fila */
     .game:nth-child(n+5) {
-        margin-top: 30px; /* Margen superior de 50px */
+        margin-top: 10px; /* Margen superior de 50px */
     }
 
     .game img {
@@ -55,7 +55,7 @@
     font-weight: bold;
     text-shadow: 3px 3px 1px rgba(0, 0, 0, 1);
     transform: rotate(-10deg);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     font-size: 1.5vw; /* Ajusta este tamaño según lo que necesites */
 }
 
@@ -69,3 +69,42 @@
     background-color: #4CAF50; /* Color de fondo para el mensaje de éxito */
     color: white; /* Color de texto blanco */
 }
+
+
+.carousel {
+    position: relative;
+    max-width: 100%;
+    height: 400px; /* Altura del carrusel */
+    overflow: hidden; /* Para que las imágenes no desborden */
+}
+
+.slides {
+    display: flex; /* Hace que las imágenes se alineen horizontalmente */
+    transition: transform 0.5s ease-in-out; /* Animación suave de deslizamiento */
+}
+
+    .slides img {
+        width: 100%; /* Cada imagen ocupa todo el ancho del carrusel */
+        height: 100%;
+        object-fit: cover;
+        flex-shrink: 0; /* Evita que las imágenes se reduzcan */
+    }
+
+.dots {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+    .dot.active {
+        background-color: #717171;
+    }
