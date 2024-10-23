@@ -1,0 +1,12 @@
+-- agrega los productos
+use bdg3;
+INSERT INTO [dbo].[productos] (nombre, descripcion, precio, stock, fecha_lanzamiento, tipo, imagen_url)
+VALUES 
+    ('Nintendo Switch', 'Consola de videojuegos híbrida de Nintendo', 299.99, 10, '2024-03-03', 'nintendo', '~/assets/nintendo_switch.png'),
+    ('PlayStation 5', 'Consola de videojuegos de Sony con gráficos avanzados', 499.99, 5, '2023-11-12', 'playstation', '~/assets/nintendo_wii.png'),
+    ('Xbox Series X', 'Consola de videojuegos de Microsoft con rendimiento superior', 499.99, 7, '2023-11-10', 'xbox', '~/assets/nintendo_switch.png'),
+    ('Controlador Xbox Wireless', 'Controlador inalámbrico para Xbox', 59.99, 20, NULL, 'accesorios', '~/assets/nintendo_wii.png'),
+    ('Nintendo 3DS', 'Consola portátil de Nintendo', 199.99, 15, '2024-03-03', 'nintendo', '~/assets/nintendo_switch.png'),
+    ('Nintendo Wii U', 'Consola de videojuegos de Nintendo', 249.99, 10, '2024-04-15', 'nintendo', '~/assets/nintendo_wii.png'),
+    ('Nintendo GameCube', 'Consola clásica de Nintendo', 149.99, 5, '2024-05-20', 'nintendo', '~/assets/nintendo_switch.png');
+GO

@@ -1,0 +1,7 @@
+-- agrega roles
+use bdg3;
+INSERT INTO roles (Nombre) 
+VALUES ('Usuario');
+INSERT INTO roles (Nombre) 
+VALUES ('Administrador');
+GO

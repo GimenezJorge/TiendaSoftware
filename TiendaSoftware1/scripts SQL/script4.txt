@@ -1,0 +1,4 @@
+-- elimina el constraint de productos
+use bdg3;
+ALTER TABLE productos
+DROP CONSTRAINT CK__productos__tipo__6B24EA82
