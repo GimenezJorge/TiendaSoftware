@@ -1,0 +1,77 @@
+body {
+    font-family: 'Garamond', serif; /* Cambia a una fuente más clásica y elegante */
+    margin: 0;
+    padding: 0;
+    background-color: #DEC59B;
+    background-image: url('/assets/imagenfondo.png');
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    padding-bottom: 50px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    background: linear-gradient(to right, #2b5a4a, #ab8d59); /* Verde profundo al dorado claro */
+    height: 140px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    padding-top: 20px;
+    border: none;
+}
+
+.navbar-brand img {
+    transition: filter 0.1s ease; /* Agrega una transición suave al brillo */
+}
+
+    .navbar-brand img:hover {
+        /*filter: brightness(1.5); /* Aumenta el brillo al hacer hover */
+        filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.8)); /* Agrega una sombra */
+    }
+
+.nav-link {
+    color: white !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra con desplazamiento */
+    /*font-weight: bold;*/
+    font-family: 'Times New Roman', Times, serif !important;
+    font-size: 24px;
+}
+
+    .nav-link:hover {
+        color: #FFD700 !important; /* Amarillo dorado */
+    }
+
+footer {
+    font-family: "Times New Roman", Times, serif;
+    padding: 0px;
+    text-align: center;
+    background: #2b5a4a; /* Verde profundo */
+    color: #c7b9b9; /* Gris claro */
+    border-top: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+    align-items: flex-end; /* Centra el texto horizontalmente */
+    color: white; /* Ajusta el color del texto según sea necesario */
+}
+
+/* Ajustes adicionales para el logout */
+.logout {
+    margin-top: 5px; /* Espaciado entre los datos del usuario y el logout */
+    font-size: 20px; /* Tamaño de la fuente para el logout */
+    color: #ffcccc !important; /* Color del texto del logout */
+}
+
+.user-details {
+    display: flex; /* Habilita el uso de flexbox */
+    flex-direction: column; /* Alinea los elementos en una columna */
+    align-items: flex-end; /* Alinea los elementos al final del eje transversal (derecha) */
+    text-align: right; /* Asegura que el texto esté alineado a la derecha */
+}
