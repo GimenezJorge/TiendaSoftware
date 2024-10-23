@@ -23,11 +23,13 @@ img {
 }
 
 .game {
-    flex: 1 0 30%; /* Ajustamos el tamaño de cada elemento a aproximadamente 1/3 del ancho disponible */
+    flex: 1 0 25%; /* Cambiar a 25% para permitir un tamaño mayor de la imagen */
     margin: 0; /* Sin margen entre los juegos */
     text-align: center; /* Centrar el texto */
     overflow: hidden; /* Ocultar el desbordamiento */
     transition: transform 0.2s ease; /* Transición más rápida para el contenedor */
+    padding: 5%; /* Añadimos un padding para agrandar el contenedor */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
     border-radius: 110px !important; /* Bordes redondeados por defecto */
 }
 
@@ -36,9 +38,9 @@ img {
         margin-top: 10px; /* Margen superior de 10px */
     }
 
-    /* Ajuste para hacer que las imágenes sean más grandes (70% en vez de 50%) */
+    /* Ajuste para hacer que las imágenes sean más grandes (70% a 84%) */
     .game img {
-        width: 70%; /* Reduce el tamaño de la imagen al 70% */
+        width: 84%; /* Aumentamos el tamaño de la imagen al 84% */
         height: auto; /* Mantiene la proporción de la imagen */
         transition: transform 0.1s ease !important; /* Transición más lenta para la imagen */
     }
@@ -61,6 +63,7 @@ img {
     margin-bottom: 20px;
     font-size: 1.5vw; /* Ajusta el tamaño de la fuente */
 }
+
 
 /* Estilos para mensajes de éxito */
 .alert {
