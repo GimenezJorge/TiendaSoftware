@@ -31,20 +31,23 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
-                        <img src="~/assets/tipito_mago.png" alt="Logo" style="height: 150px; width: auto; margin-left: 30px; margin-top: 0px;">
+                        
                         @if (Context.Session.GetString("email") != null)
                         {
                             <div class="user-info text-center">
                                 <!-- Nuevo contenedor para los datos del usuario -->
                                 <div class="logout">
-                                    <a class="nav-link" asp-action="Logout" asp-controller="Home" style="color: blue;">Salir</a>
+                                    <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
                                 </div>
                                 <div class="user-details">
-                                    <span class="nav-link">
-                                        <strong>@Context.Session.GetString("nombre")</strong>
-                                        <br />
+                                    <!--<span class="nav-link">-->
+                                        <strong class="nombre-usuario">@Context.Session.GetString("nombre")</strong>
+
+                                        
+                                        <!--
                                         <small>@Context.Session.GetString("email")</small>
-                                    </span>
+                                        -->
+                                    <!--</span>-->
                                 </div>
 
                             </div>
@@ -58,6 +61,7 @@
                                 <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Ingresar</a>
                             </li>
                         }
+                        <img src="~/assets/tipito_mago.png" alt="Logo" style="height: 150px; width: auto; margin-left: 30px; margin-top: 0px;">
                     </ul>
                 </div>
             </div>

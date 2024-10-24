@@ -1,58 +1,54 @@
-/* Estilos generales */
-* {
-    border-radius: 0 !important;
+/*
+main.pb-3 {    
+    background-color: #3067ba;
 }
+*/
 
-img {
-    border-radius: 150px !important;
+/*
+.seccion {    
+    background-color: red
+    
 }
+*/
 
-/* Estilos para secciones */
-.seccion {
-    padding: 20px; /* Espaciado en la sección */
-}
 
 .seccion-titulo {
-    font-size: 24px; /* Tamaño del título de la sección */
+    /*font-size: 24px; */
 }
 
-/* Estilos para el contenedor principal */
 #main-container {
-    max-width: 1000px; /* Fijamos el ancho del contenedor */
-    margin: auto; /* Centrar el contenedor */
+    max-width: 1000px; 
 }
 
 .game {
-    flex: 1 0 25%; /* Cambiar a 25% para permitir un tamaño mayor de la imagen */
-    margin: 0; /* Sin margen entre los juegos */
-    text-align: center; /* Centrar el texto */
-    overflow: hidden; /* Ocultar el desbordamiento */
-    transition: transform 0.2s ease; /* Transición más rápida para el contenedor */
-    padding: 5%; /* Añadimos un padding para agrandar el contenedor */
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
-    border-radius: 110px !important; /* Bordes redondeados por defecto */
+    flex: 1 0 25%;
+    margin:0; 
+    text-align: center; /* Centrar el texto */    
+    transition: transform 0.1s cubic-bezier(0.7, 0.71, 0.64, 1.35); /* Transici?n m?s r?pida para el contenedor */
+    padding: 3%; /* A?adimos un padding para agrandar el contenedor */    
 }
 
-    /* Margen superior para las imágenes de la segunda fila */
+    /* Margen superior para las im?genes de la segunda fila */
     .game:nth-child(n+4) {
-        margin-top: 10px; /* Margen superior de 10px */
+        margin-top: 30px; /* Margen superior de 10px */
     }
 
-    /* Ajuste para hacer que las imágenes sean más grandes (70% a 84%) */
+    /* Ajuste para hacer que las im?genes sean m?s grandes (70% a 84%) */
     .game img {
-        width: 84%; /* Aumentamos el tamaño de la imagen al 84% */
-        height: auto; /* Mantiene la proporción de la imagen */
-        transition: transform 0.1s ease !important; /* Transición más lenta para la imagen */
+        width: 84%; /* Aumentamos el tama?o de la imagen al 84% */
+        height: auto; /* Mantiene la proporci?n de la imagen */
+        transition: transform 0.1s ease !important; /* Transici?n m?s lenta para la imagen */
+        border-radius: 30px !important;
     }
 
-    /* Hover en las imágenes */
+    /* Hover en las im?genes */
     .game:hover img {
-        transform: scale(1.06); /* Aumenta el tamaño de la imagen al 106% */
+        transform: scale(1.06); /* Aumenta el tama?o de la imagen al 106% */
         border-radius: 0; /* Elimina el redondeado al hacer hover */
     }
 
     .game:hover {
-        transform: scale(1.02); /* Aumenta el tamaño del contenedor al 102% */
+        transform: scale(1.02); /* Aumenta el tama?o del contenedor al 102% */
     }
 
 .game-title {
@@ -61,57 +57,64 @@ img {
     text-shadow: 3px 3px 1px rgba(0, 0, 0, 1);
     transform: rotate(-10deg);
     margin-bottom: 20px;
-    font-size: 1.5vw; /* Ajusta el tamaño de la fuente */
+    font-size: 1.5vw; /* Ajusta el tama?o de la fuente */
 }
 
 
-/* Estilos para mensajes de éxito */
+/* Estilos para mensajes de ?xito */
 .alert {
     padding: 15px; /* Espaciado en el mensaje */
     margin-top: 20px; /* Espaciado superior */
 }
 
 .alert-success {
-    background-color: #4CAF50; /* Color de fondo para el mensaje de éxito */
+    background-color: #4CAF50; /* Color de fondo para el mensaje de ?xito */
     color: white; /* Color del texto */
 }
 
-/* Carrusel de imágenes */
+
+/* Carrusel de im?genes */
 .carousel {
-    position: relative;
-    max-width: 100%;
-    height: 400px; /* Altura del carrusel */
-    overflow: hidden; /* Para que las imágenes no desborden */
+    border-radius: 5px !important;
+    width: 100%; /* El carousel ocupa el 100% del ancho del contenedor */
+    max-width: 800px; /* Puedes ajustar esto segï¿½n el tamaï¿½o mï¿½ximo deseado */
+    
+    position: relative; /* Para posicionar elementos dentro del carousel */
+    overflow: hidden; /* Oculta cualquier contenido que sobresalga del carousel */
+    margin: auto; /* Centra el carousel horizontalmente */
 }
 
 .slides {
-    display: flex; /* Hace que las imágenes se alineen horizontalmente */
-    transition: transform 0.5s ease-in-out; /* Animación suave de deslizamiento */
+    display: flex; /* Usamos flexbox para alinear las imï¿½genes en fila */
+    transition: transform 0.5s ease-in-out; /* Transiciï¿½n suave para desplazamiento */
+    object-fit: cover;
 }
 
     .slides img {
-        border-radius: 0px !important;
-        width: 100%; /* Cada imagen ocupa todo el ancho del carrusel */
-        height: 100%;
-        object-fit: cover;
-        flex-shrink: 0; /* Evita que las imágenes se reduzcan */
+        width: 100%; /* Las imï¿½genes ocupan el 100% del ancho del contenedor */
+        height: 100%; /* Las imï¿½genes ocupan el 100% de la altura del carousel */
+        object-fit: cover; /* Ajusta la imagen sin deformarla, recortando si es necesario */
+        flex-shrink: 1; /* Las imï¿½genes no se encogen por debajo de su tamaï¿½o natural */
+        object-fit:fill;
     }
 
 .dots {
-    text-align: center;
-    margin-top: 10px;
+    text-align: center; /* Centra los puntos de navegaciï¿½n */
+    position: absolute; /* Posiciona los puntos sobre el carousel */
+    bottom: 15px; /* Espaciado desde la parte inferior del carousel */
+    width: 100%; /* El ancho completo para centrar los puntos */
 }
 
 .dot {
-    height: 15px;
-    width: 15px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
     margin: 0 5px;
     background-color: #bbb;
     border-radius: 50%;
-    display: inline-block;
     cursor: pointer;
 }
 
     .dot.active {
-        background-color: #717171;
+        background-color: #717171; /* Estilo del punto activo */
     }
