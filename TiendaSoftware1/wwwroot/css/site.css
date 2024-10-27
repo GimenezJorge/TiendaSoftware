@@ -28,7 +28,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
-    font-weight: 600; /* para títulos más gruesos */
+    font-weight: 600; /* para tï¿½tulos mï¿½s gruesos */
 }
 
 p, a, li {
@@ -39,7 +39,7 @@ p, a, li {
 
 
 
-/* Estilo para la sección */
+/* Estilo para la secciï¿½n */
 .seccion {
     margin: 40px 0;
     text-align: center;
@@ -64,15 +64,15 @@ p, a, li {
         width: 100%;
         height: auto;
         border-radius: 8px;
-        transition: transform 0.3s ease;
+        
     }
 
     /* Efecto hover sobre la imagen */
     .game:hover img {
-        transform: scale(1.05);
+        
     }
 
-/* Título dentro de la imagen */
+/* Tï¿½tulo dentro de la imagen */
 .game-title {
     position: absolute;
     bottom: 0;
@@ -104,13 +104,13 @@ p, a, li {
 
 .form-wrapper {
     /* Permite que el formulario no se vea afectado por flexbox */
-    display: block; /* Asegura que el formulario ocupe su tamaño natural */
-    width: 100%; /* O un ancho específico si lo deseas */
-    max-width: 400px; /* Ancho máximo para el formulario */
+    display: block; /* Asegura que el formulario ocupe su tamaï¿½o natural */
+    width: 100%; /* O un ancho especï¿½fico si lo deseas */
+    max-width: 400px; /* Ancho mï¿½ximo para el formulario */
     margin: 0 auto; /* Centrar el formulario dentro de su columna */
 }
 form {
-    width: 100%; /* Asegúrate de que el formulario use todo el ancho disponible */
+    width: 100%; /* Asegï¿½rate de que el formulario use todo el ancho disponible */
 }
 
 
