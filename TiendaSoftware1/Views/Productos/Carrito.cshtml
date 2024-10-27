@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TiendaSoftware1.Models.Producto>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carrito de Compras</title>
+</head>
+<body>
+    <h1>Carrito de Compras</h1>
+
+    @if (!Model.Any())
+    {
+        <p>No hay productos en el carrito.</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var producto in Model)
+            {
+                <li>
+                    <h2>@producto.Nombre</h2>
+                    <p>Precio: @producto.Precio</p>
+                    <p>Stock: @producto.Stock</p>
+                </li>
+            }
+        </ul>
+    }
+
+    <a href="@Url.Action("Index", "Productos")">Continuar Comprando</a>
+</body>
+</html>

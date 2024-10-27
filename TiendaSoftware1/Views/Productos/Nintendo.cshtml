@@ -22,10 +22,14 @@
                     <p>@producto.Descripcion</p>
                     <p>Precio: @producto.Precio</p>
                     <p>Stock: @producto.Stock</p>
-                    <p>Fecha de Lanzamiento: @(producto.FechaLanzamiento.HasValue ? producto.FechaLanzamiento.Value.ToDateTime(TimeOnly.MinValue).ToString("dd/MM/yyyy") : "N/A")</p>
+                    <p>Fecha de Lanzamiento: @(producto.FechaLanzamiento.HasValue ? producto.FechaLanzamiento.Value.ToString("dd/MM/yyyy") : "N/A")</p>
 
                     <img src="@Url.Content(producto.ImagenUrl)" alt="@producto.Nombre" />
 
+                    <!-- Botón para agregar al carrito -->
+                    <button>
+                        <a href="@Url.Action("AgregarAlCarrito", "Carrito", new { id = producto.Id })">Agregar al Carrito</a>
+                    </button>
                 </li>
             }
         </ul>
