@@ -27,26 +27,21 @@
                             <!--<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>-->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionUsuarios">Gestionar Usuarios</a>
+                            @* <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionUsuarios">Gestionar Usuarios</a> *@
                         </li>
                     </ul>
-                    <ul class="navbar-nav ms-auto d-flex align-items-center">
-                        
+                    <ul class="navbar-nav ms-auto d-flex align-items-center">                        
                         @if (Context.Session.GetString("email") != null)
                         {
                             <div class="user-info text-center">
                                 <!-- Nuevo contenedor para los datos del usuario -->
-                                <div class="logout">
-                                    <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
-                                </div>
                                 <div class="user-details">
                                     <!--<span class="nav-link">-->
-                                        <strong class="nombre-usuario">@Context.Session.GetString("nombre")</strong>
-
-                                        
-                                        <!--
-                                        <small>@Context.Session.GetString("email")</small>
-                                        -->
+                                        <strong class="nombre-usuario">@Context.Session.GetString("nombre")</strong>                                        
+                                        <!--<small>@Context.Session.GetString("email")</small>-->
+                                        <div class="logout">                                        
+                                            <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
+                                        </div>
                                     <!--</span>-->
                                 </div>
 
@@ -55,10 +50,18 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Signup">Registrarse</a>
+                                @* <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Signup">Registrarse</a> *@
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                                @* <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a> *@
+                                <div class="dropdown">
+                                    <button class="dropdown-toggle">Menú</button>
+                                    <div class="dropdown-content">
+                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionUsuarios">Gestionar Usuarios</a>
+                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Signup">Registrarse</a>
+                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                                    </div>
+                                </div>
                             </li>
                         }
                         <img src="~/assets/tipito_mago.png" alt="Logo" style="height: 150px; width: auto; margin-left: 30px; margin-top: 0px;">
