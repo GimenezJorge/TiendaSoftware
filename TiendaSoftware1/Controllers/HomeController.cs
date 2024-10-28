@@ -23,6 +23,38 @@ namespace TiendaSoftware1.Controllers
 
         // --------- CRUD USUARIOS ---------
 
+
+        // Crear usuario (Create) - GET
+        public IActionResult CreateUsuario()
+        {
+            return View(); // Devolver el formulario de creación
+        }
+
+        // Crear usuario (Create) - POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateUsuario(Usuario usuario)
+        {
+            // Verificar si el correo electrónico ya existe
+            if (db.Usuarios.Any(x => x.Email == usuario.Email))
+            {
+                ViewBag.Notification = "Este usuario ya existe";
+                return View(); // Si existe, recargar el formulario de creación
+            }
+            else
+            {
+                // Asignar rol predeterminado
+                usuario.RolId = 1;
+
+                db.Usuarios.Add(usuario);
+                db.SaveChanges();
+
+                // Mensaje de éxito
+                TempData["SuccessMessage"] = "Usuario creado con éxito";
+                return RedirectToAction("GestionUsuarios"); // Redirigir a la lista de usuarios
+            }
+        }
+
         // Leer usuarios (Read)
         public IActionResult GestionUsuarios()
         {
@@ -38,15 +70,13 @@ namespace TiendaSoftware1.Controllers
                 return NotFound();
             }
 
-            var usuario = await db.Usuarios.FindAsync(id); // Buscar el usuario por su ID usando 'db'
+            var usuario = await db.Usuarios.FindAsync(id);
             if (usuario == null)
             {
                 return NotFound();
             }
-            return View(usuario); // Devolver el formulario de edición
+            return View(usuario);
         }
-
-
 
         // Editar usuario (Update) - POST
         [HttpPost]
@@ -62,9 +92,9 @@ namespace TiendaSoftware1.Controllers
             {
                 try
                 {
-                    db.Usuarios.Update(usuario); // Actualizar los datos del usuario
-                    await db.SaveChangesAsync();  // Guardar los cambios en la base de datos
-                    return RedirectToAction("GestionUsuarios"); // Redirigir a la lista de usuarios
+                    db.Usuarios.Update(usuario);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("GestionUsuarios"); // Redirige a la lista de usuarios
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -79,7 +109,8 @@ namespace TiendaSoftware1.Controllers
                 }
             }
 
-            return View(usuario); // Si hay errores, volver a la vista con los datos actuales
+            // Si hay errores de validación, volver a la vista de edición
+            return View(usuario);
         }
 
 
@@ -227,6 +258,120 @@ namespace TiendaSoftware1.Controllers
         }
 
 
- 
+        //---------------PRODUCTOS
+        public IActionResult GestionProductos()
+        {
+            return View(db.Productos.ToList());
+        }
+
+        public IActionResult CreateProducto()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateProducto(Producto producto)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Productos.Add(producto);
+                db.SaveChanges();
+                return RedirectToAction("GestionProductos");
+            }
+            return View(producto);
+        }
+        // Editar producto (Update) - GET
+        public async Task<IActionResult> EditProducto(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var producto = await db.Productos.FindAsync(id); // Buscar el producto por su ID
+            if (producto == null)
+            {
+                return NotFound();
+            }
+            return View(producto); // Retornar la vista para editar el producto
+        }
+
+        // Editar producto (Update) - POST
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditProducto(int id, [Bind("Id,Nombre,Descripcion,Precio,Stock,FechaLanzamiento,Tipo")] Producto producto)
+        {
+            if (id != producto.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    db.Productos.Update(producto); // Actualizar los datos del producto
+                    await db.SaveChangesAsync(); // Guardar los cambios en la base de datos
+                    return RedirectToAction("GestionProductos"); // Redirigir a la lista de productos
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ProductoExists(producto.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            return View(producto); // Si hay errores, volver a la vista con los datos actuales
+        }
+
+
+
+        // Eliminar producto (Delete) - GET
+        [HttpGet]
+        public async Task<IActionResult> DeleteProducto(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var producto = await db.Productos.FirstOrDefaultAsync(m => m.Id == id);
+            if (producto == null)
+            {
+                return NotFound();
+            }
+
+            return View(producto); // Mostrar la vista de confirmación
+        }
+
+        // Eliminar producto (Delete) - POST
+        [HttpPost, ActionName("DeleteProducto")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var producto = await db.Productos.FindAsync(id);
+            if (producto == null)
+            {
+                return NotFound();
+            }
+
+            db.Productos.Remove(producto);
+            await db.SaveChangesAsync();
+
+            return RedirectToAction("GestionProductos"); // Redirigir a la lista de productos
+        }
+
+        // Método auxiliar para verificar si un producto existe
+        private bool ProductoExists(int id)
+        {
+            return db.Productos.Any(e => e.Id == id);
+        }
+
     }
 }

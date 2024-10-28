@@ -4,7 +4,15 @@
     ViewData["Title"] = "Gestión de Usuarios";
 }
 
+
 <h1>Gestión de Usuarios</h1>
+
+<!-- Contenedor para el botón "Crear Usuario", alineado a la derecha -->
+<div style="display: flex; justify-content: flex-end; margin-bottom: 15px;">
+    <a asp-action="CreateUsuario" class="btn btn-primary">
+        Crear Usuario
+    </a>
+</div>
 
 <table class="table">
     <thead>
@@ -27,7 +35,7 @@
                 <td>
                     <!-- Usando botones para las acciones -->
                     <a asp-action="EditUsuario" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Detalles</a>
+   
                     <a asp-action="DeleteUsuario" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Eliminar</a>
                 </td>
             </tr>
