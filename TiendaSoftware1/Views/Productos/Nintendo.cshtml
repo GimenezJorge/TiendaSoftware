@@ -32,12 +32,12 @@
             }
         </ul>
     }
-</body>
 
-<script>
-    function agregarAlCarrito(productoId) {
-        var cantidad = document.getElementById("cantidad_" + productoId).value;
-        window.location.href = '@Url.Action("AgregarAlCarrito", "Carrito")' + '?id=' + productoId + '&cantidad=' + cantidad;
-    }
-</script>
+    <script>
+        function agregarAlCarrito(productoId) {
+            var cantidad = document.getElementById("cantidad_" + productoId).value;
+            window.location.href = '@Url.Action("AgregarAlCarrito", "Carrito")' + '?id=' + productoId + '&cantidad=' + cantidad;
+        }
+    </script>
+</body>
 </html>

@@ -27,6 +27,14 @@ namespace TiendaSoftware1.Controllers
             if (producto != null && cantidad > 0)
             {
                 var carritoProducto = _carrito.CarritoProductos.FirstOrDefault(cp => cp.ProductoId == producto.Id);
+                int cantidadActual = carritoProducto != null ? carritoProducto.Cantidad : 0;
+
+                // Verifica si la cantidad total supera el stock
+                if (cantidadActual + cantidad > producto.Stock)
+                {
+                    // Puedes retornar un mensaje o redirigir a la vista con un mensaje
+                    return RedirectToAction("Carrito", new { mensaje = "No se puede agregar más productos al carrito, excede el stock disponible." });
+                }
 
                 if (carritoProducto != null)
                 {
@@ -48,9 +56,23 @@ namespace TiendaSoftware1.Controllers
             return RedirectToAction("Carrito");
         }
 
-        // Método para mostrar el carrito
-        public IActionResult Carrito()
+        // Método para quitar un producto del carrito
+        [HttpPost]
+        public IActionResult QuitarDelCarrito(int productoId)
         {
+            var carritoProducto = _carrito.CarritoProductos.FirstOrDefault(cp => cp.ProductoId == productoId);
+            if (carritoProducto != null)
+            {
+                _carrito.CarritoProductos.Remove(carritoProducto);
+            }
+
+            return RedirectToAction("Carrito");
+        }
+
+        // Método para mostrar el carrito
+        public IActionResult Carrito(string mensaje = null)
+        {
+            ViewBag.Mensaje = mensaje; // Pasar mensaje a la vista
             return View("~/Views/Productos/Carrito.cshtml", _carrito); // Ruta completa a la vista
         }
     }
