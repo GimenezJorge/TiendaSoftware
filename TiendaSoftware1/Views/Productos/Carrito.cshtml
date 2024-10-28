@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TiendaSoftware1.Models.Producto>
+﻿@model TiendaSoftware1.Models.Carrito
 
 <!DOCTYPE html>
 <html>
@@ -8,24 +8,27 @@
 <body>
     <h1>Carrito de Compras</h1>
 
-    @if (!Model.Any())
+    @if (!Model.CarritoProductos.Any())
     {
         <p>No hay productos en el carrito.</p>
     }
     else
     {
         <ul>
-            @foreach (var producto in Model)
+            @foreach (var carritoProducto in Model.CarritoProductos)
             {
                 <li>
-                    <h2>@producto.Nombre</h2>
-                    <p>Precio: @producto.Precio</p>
-                    <p>Stock: @producto.Stock</p>
+                    <h2>@carritoProducto.Producto.Nombre</h2>
+                    <p>Precio: @carritoProducto.Producto.Precio</p>
+                    <p>Cantidad: @carritoProducto.Cantidad</p>
+                    <p>Subtotal: @((carritoProducto.Producto.Precio * carritoProducto.Cantidad).ToString("C"))</p>
                 </li>
             }
         </ul>
+
+        <p>Total: @((Model.CarritoProductos.Sum(cp => cp.Producto.Precio * cp.Cantidad)).ToString("C"))</p>
     }
 
-    <a href="@Url.Action("Index", "Productos")">Continuar Comprando</a>
+    <a href="@Url.Action("Index", "Home")">Seguir comprando</a>
 </body>
 </html>

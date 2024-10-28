@@ -22,17 +22,22 @@
                     <p>@producto.Descripcion</p>
                     <p>Precio: @producto.Precio</p>
                     <p>Stock: @producto.Stock</p>
-                    <p>Fecha de Lanzamiento: @(producto.FechaLanzamiento.HasValue ? producto.FechaLanzamiento.Value.ToString("dd/MM/yyyy") : "N/A")</p>
 
                     <img src="@Url.Content(producto.ImagenUrl)" alt="@producto.Nombre" />
 
                     <!-- Botón para agregar al carrito -->
-                    <button>
-                        <a href="@Url.Action("AgregarAlCarrito", "Carrito", new { id = producto.Id })">Agregar al Carrito</a>
-                    </button>
+                    <button type="button" onclick="agregarAlCarrito(@producto.Id)">Agregar al Carrito</button>
+                    <input type="number" id="cantidad_@producto.Id" value="1" min="1" max="@producto.Stock" style="width: 50px; margin-left: 10px;" />
                 </li>
             }
         </ul>
     }
 </body>
+
+<script>
+    function agregarAlCarrito(productoId) {
+        var cantidad = document.getElementById("cantidad_" + productoId).value;
+        window.location.href = '@Url.Action("AgregarAlCarrito", "Carrito")' + '?id=' + productoId + '&cantidad=' + cantidad;
+    }
+</script>
 </html>

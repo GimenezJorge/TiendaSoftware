@@ -9,8 +9,11 @@ namespace TiendaSoftware1.Controllers
     {
         private readonly Bdg3Context _context;
 
-        // Lista para almacenar productos en el carrito
-        private static List<Producto> _carrito = new List<Producto>();
+        // Carrito de compras, ahora utilizando un objeto Carrito en vez de una lista de productos.
+        private static Carrito _carrito = new Carrito
+        {
+            CarritoProductos = new List<CarritoProducto>()
+        };
 
         public CarritoController(Bdg3Context context)
         {
@@ -18,12 +21,28 @@ namespace TiendaSoftware1.Controllers
         }
 
         // Método para agregar un producto al carrito
-        public IActionResult AgregarAlCarrito(int id)
+        public IActionResult AgregarAlCarrito(int id, int cantidad)
         {
             var producto = _context.Productos.FirstOrDefault(p => p.Id == id);
-            if (producto != null)
+            if (producto != null && cantidad > 0)
             {
-                _carrito.Add(producto);
+                var carritoProducto = _carrito.CarritoProductos.FirstOrDefault(cp => cp.ProductoId == producto.Id);
+
+                if (carritoProducto != null)
+                {
+                    // Si el producto ya está en el carrito, simplemente incrementamos la cantidad
+                    carritoProducto.Cantidad += cantidad;
+                }
+                else
+                {
+                    // Si no está en el carrito, lo agregamos
+                    _carrito.CarritoProductos.Add(new CarritoProducto
+                    {
+                        ProductoId = producto.Id,
+                        Producto = producto,
+                        Cantidad = cantidad
+                    });
+                }
             }
 
             return RedirectToAction("Carrito");
@@ -32,7 +51,6 @@ namespace TiendaSoftware1.Controllers
         // Método para mostrar el carrito
         public IActionResult Carrito()
         {
-            // Cambia esto para buscar en la ubicación correcta
             return View("~/Views/Productos/Carrito.cshtml", _carrito); // Ruta completa a la vista
         }
     }
