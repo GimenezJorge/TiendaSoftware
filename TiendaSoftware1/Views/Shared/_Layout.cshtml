@@ -16,7 +16,7 @@
         <nav class="navbar navbar-expand-sm navbar-light">
             <div class="container-fluid d-flex align-items-center">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/assets/logo_la_fortaleza.gif" alt="Logo" style="height: 150px; width: auto; margin-left: 30px; margin-top: 35px;">
+                    <img src="~/assets/logo_la_fortaleza.gif" alt="Logo" class="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -30,22 +30,23 @@
                             @* <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionUsuarios">Gestionar Usuarios</a> *@
                         </li>
                     </ul>
-                    <ul class="navbar-nav ms-auto d-flex align-items-center">                        
+                    <ul class="navbar-nav ms-auto d-flex align-items-center">
                         @if (Context.Session.GetString("email") != null)
                         {
-                            <div class="user-info text-center">
-                                <!-- Nuevo contenedor para los datos del usuario -->
-                                <div class="user-details">
-                                    <!--<span class="nav-link">-->
-                                        <strong class="nombre-usuario">@Context.Session.GetString("nombre")</strong>                                        
-                                        <!--<small>@Context.Session.GetString("email")</small>-->
-                                        <div class="logout">                                        
-                                            <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
-                                        </div>
-                                    <!--</span>-->
+                            <a href="@Url.Action("Carrito", "Carrito")">
+                                <img class="logoCarrito" src="~/assets/carrito.png" alt="Carrito">
+                            </a>
+                            <div class="user-info d-flex align-items-center">
+                             
+                                <div class="user-details me-2">
+                                    <!-- Margen a la derecha -->
+                                    <strong class="nombre-usuario">@Context.Session.GetString("nombre")</strong>
+                                    <div class="logout">
+                                        <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
+                                    </div>
                                 </div>
-
                             </div>
+
                         }
                         else
                         {
@@ -64,7 +65,7 @@
                                 </div>
                             </li>
                         }
-                        <img src="~/assets/tipito_mago.png" alt="Logo" style="height: 150px; width: auto; margin-left: 30px; margin-top: 0px;">
+                        <img class= "maguito" src="~/assets/tipito_mago.png" alt="Logo" class="logo-tipo">
                     </ul>
                 </div>
             </div>

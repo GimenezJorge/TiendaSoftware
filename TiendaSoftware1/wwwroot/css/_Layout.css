@@ -14,36 +14,41 @@ body {
     padding-top: 0px;
 }
 
-    .navbar-brand img:hover {        
+.navbar-brand img {
+    height: 150px;
+    margin-left: 25px;
+    margin-top: 55px;
+}
+
+    .navbar-brand img:hover {
         filter: drop-shadow(-2px 2px 2px rgb(0 0 0));
     }
+
 .nav-link {
     color: white !important;
     text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
-    /*font-weight: bold;*/
-    /*font-family: 'Times New Roman', Times, serif;*/
     font-size: 24px;
 }
-.nav-link:hover {
-    color: yellow !important;
-}
+
+    .nav-link:hover {
+        color: yellow !important;
+    }
+
 .nombre-usuario {
-    /*font-family: 'Times New Roman', Times, serif;*/
-    text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5); 
+    text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
     font-size: 24px;
     margin-right: 8px;
 }
-.nombre-usuario:hover {    
-    color: white; 
-}
 
+    .nombre-usuario:hover {
+        color: white;
+    }
 
 footer {
-    /*font-family: "Times New Roman", Times, serif;*/
     padding: 10px;
     text-align: center;
     background: #2b5a4a; /* Verde profundo */
-    color: #c3c2ce; /* Gris claro */    
+    color: #c3c2ce; /* Gris claro */
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -51,29 +56,22 @@ footer {
 
 .user-info {
     display: flex;
-    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
-    align-items: flex-end; /* Centra el texto horizontalmente */
-    color: white; /* Ajusta el color del texto seg?n sea necesario */
-}
-
-.logout {    
-    font-size: 20px !important; /* Tama?o de la fuente para el logout */    
+    align-items: center; /* Alinea verticalmente el carrito y el nombre del usuario */
+    color: white; /* Ajusta el color del texto según sea necesario */
 }
 
 .user-details {
-    display: flex; /* Habilita el uso de flexbox */
-    flex-direction: column; /* Alinea los elementos en una columna */
-    align-items: flex-end; /* Alinea los elementos al final del eje transversal (derecha) */
-    text-align: right; /* Asegura que el texto est? alineado a la derecha */
+    margin-top: 80px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: row; /* Alinea el nombre y salir en columna */
+    align-items: flex-end; /* Alinea al final del eje transversal (derecha) */
+    text-align: right; /* Asegura que el texto esté alineado a la derecha */
 }
 
-
-
-
-
-
-
-
+.logout {
+    font-size: 20px !important; /* Tamaño de la fuente para el logout */
+}
 
 .dropdown {
     border-radius: 5px;
@@ -82,12 +80,13 @@ footer {
     display: inline-block;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
+    margin-top: 150px;
+    margin-right: 30px;
 }
 
 .dropdown-toggle {
     background: none;
     color: white;
-    /*font-family: 'Times New Roman', Times, serif;*/
     font-size: 20px;
     border: none;
     cursor: pointer;
@@ -121,6 +120,30 @@ footer {
 .dropdown-toggle:hover {
     color: yellow;
 }
+
 .logout {
+    margin-top: 10px;
+    height: 50px;
+    border-radius: 10px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: darkred;
+}
+
+.logoCarrito {
+    height: 55px;
+    width: auto;
+    position: absolute; /* Cambiado a posición absoluta */
+    right: 35px; /* Ajusta este valor según sea necesario para alinearlo correctamente */
+    top: 180px; /* Ajusta la altura de la imagen del carrito según lo necesites */
+    filter: drop-shadow(-1px 2px 10px rgb(83 40 40));
+}
+
+    .logoCarrito:hover {
+        cursor: pointer;
+    }
+
+.maguito {    
+    
+    margin-top: 60px;
+    height: 120px;
 }
