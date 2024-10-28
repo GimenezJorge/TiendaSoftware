@@ -1,9 +1,11 @@
 body {
     background-image: url('/assets/imagenfondo.png');
-    background-size: cover;
+    background-color: #DEC59B;
+    /*background-size: cover;*/
     background-position: bottom;
     display: flex;
     flex-direction: column;
+    background-repeat: no-repeat;
 }
 
 .navbar {
