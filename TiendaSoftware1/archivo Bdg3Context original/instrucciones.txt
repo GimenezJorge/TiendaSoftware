@@ -1,1 +1,0 @@
-luego de clonar el repositorio, copiar este archivo en la carpeta Models y adaptar la linea de conexion. al momento de subir cambios a Git, ignorar este archivo
