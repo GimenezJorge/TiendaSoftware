@@ -34,7 +34,7 @@ body {
 }
 
 .nav-link:hover {
-    /*color: yellow !important;*/
+    color: gold !important;
     text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
 }
 
@@ -91,6 +91,10 @@ footer {
     margin-right: 30px;
 }
 
+.dropdown:hover {
+    transition: 0.1s;
+    background-color: #BB2D3B
+}
 .dropdown-toggle {
     background: none;
     color: white;
