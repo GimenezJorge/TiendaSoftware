@@ -94,6 +94,7 @@ main.pb-3 {
     border-radius: 50%;
     cursor: pointer;
 }
+
 .dot.active {
     background-color: #717171;
 }
