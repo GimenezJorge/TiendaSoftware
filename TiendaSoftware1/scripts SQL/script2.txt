@@ -1,0 +1,295 @@
+USE [bdg3]
+GO
+/****** Object:  Database [bdg3]    Script Date: 11/10/2024 21:05:06 ******/
+
+GO
+ALTER DATABASE [bdg3] SET COMPATIBILITY_LEVEL = 160
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [bdg3].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [bdg3] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [bdg3] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [bdg3] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [bdg3] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [bdg3] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [bdg3] SET AUTO_CLOSE ON 
+GO
+ALTER DATABASE [bdg3] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [bdg3] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [bdg3] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [bdg3] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [bdg3] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [bdg3] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [bdg3] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [bdg3] SET RECURSIVE_TRIGGERS OFF 
+GO
+
+ALTER DATABASE [bdg3] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [bdg3] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [bdg3] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [bdg3] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [bdg3] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [bdg3] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [bdg3] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [bdg3] SET  MULTI_USER 
+GO
+ALTER DATABASE [bdg3] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [bdg3] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [bdg3] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [bdg3] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [bdg3] SET QUERY_STORE = ON
+GO
+ALTER DATABASE [bdg3] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30), DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_STORAGE_SIZE_MB = 1000, QUERY_CAPTURE_MODE = AUTO, SIZE_BASED_CLEANUP_MODE = AUTO, MAX_PLANS_PER_QUERY = 200, WAIT_STATS_CAPTURE_MODE = ON)
+GO
+USE [bdg3]
+GO
+/****** Object:  Table [dbo].[__EFMigrationsHistory]    Script Date: 11/10/2024 21:05:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+	[MigrationId] [nvarchar](150) NOT NULL,
+	[ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+(
+	[MigrationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[carrito_productos]    Script Date: 11/10/2024 21:05:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[carrito_productos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[carrito_id] [int] NOT NULL,
+	[producto_id] [int] NOT NULL,
+	[cantidad] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[carritos]    Script Date: 11/10/2024 21:05:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[carritos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[usuario_id] [int] NOT NULL,
+	[fecha_creacion] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[metodos_pago]    Script Date: 11/10/2024 21:05:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[metodos_pago](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](100) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[pedido_productos]    Script Date: 11/10/2024 21:05:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[pedido_productos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[pedido_id] [int] NOT NULL,
+	[producto_id] [int] NOT NULL,
+	[cantidad] [int] NOT NULL,
+	[precio_unitario] [decimal](10, 2) NOT NULL,
+	[precio_total]  AS ([cantidad]*[precio_unitario]) PERSISTED,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[pedidos]    Script Date: 11/10/2024 21:05:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[pedidos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[usuario_id] [int] NOT NULL,
+	[fecha_pedido] [datetime] NULL,
+	[total] [decimal](10, 2) NOT NULL,
+	[estado] [varchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[pedidos_metodos_pago]    Script Date: 11/10/2024 21:05:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[pedidos_metodos_pago](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[pedido_id] [int] NOT NULL,
+	[metodo_pago_id] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[productos]    Script Date: 11/10/2024 21:05:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[productos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](150) NOT NULL,
+	[descripcion] [text] NULL,
+	[precio] [decimal](10, 2) NOT NULL,
+	[stock] [int] NOT NULL,
+	[fecha_lanzamiento] [date] NULL,
+	[tipo] [varchar](50) NULL,
+	[imagen_url] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[roles]    Script Date: 11/10/2024 21:05:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[roles](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [nvarchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[usuario_detalles]    Script Date: 11/10/2024 21:05:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[usuario_detalles](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[usuario_id] [int] NOT NULL,
+	[telefono] [varchar](20) NULL,
+	[direccion] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[usuarios]    Script Date: 11/10/2024 21:05:07 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[usuarios](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](100) NOT NULL,
+	[email] [varchar](150) NOT NULL,
+	[password] [varchar](255) NOT NULL,
+	[rol_id] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[carritos] ADD  DEFAULT (getdate()) FOR [fecha_creacion]
+GO
+ALTER TABLE [dbo].[pedidos] ADD  DEFAULT (getdate()) FOR [fecha_pedido]
+GO
+ALTER TABLE [dbo].[usuarios] ADD  CONSTRAINT [DF_Rol]  DEFAULT ((1)) FOR [rol_id]
+GO
+ALTER TABLE [dbo].[carrito_productos]  WITH CHECK ADD FOREIGN KEY([carrito_id])
+REFERENCES [dbo].[carritos] ([id])
+GO
+ALTER TABLE [dbo].[carrito_productos]  WITH CHECK ADD FOREIGN KEY([producto_id])
+REFERENCES [dbo].[productos] ([id])
+GO
+ALTER TABLE [dbo].[carritos]  WITH CHECK ADD FOREIGN KEY([usuario_id])
+REFERENCES [dbo].[usuarios] ([id])
+GO
+ALTER TABLE [dbo].[pedido_productos]  WITH CHECK ADD FOREIGN KEY([pedido_id])
+REFERENCES [dbo].[pedidos] ([id])
+GO
+ALTER TABLE [dbo].[pedido_productos]  WITH CHECK ADD FOREIGN KEY([producto_id])
+REFERENCES [dbo].[productos] ([id])
+GO
+ALTER TABLE [dbo].[pedidos]  WITH CHECK ADD FOREIGN KEY([usuario_id])
+REFERENCES [dbo].[usuarios] ([id])
+GO
+ALTER TABLE [dbo].[pedidos_metodos_pago]  WITH CHECK ADD FOREIGN KEY([metodo_pago_id])
+REFERENCES [dbo].[metodos_pago] ([id])
+GO
+ALTER TABLE [dbo].[pedidos_metodos_pago]  WITH CHECK ADD FOREIGN KEY([pedido_id])
+REFERENCES [dbo].[pedidos] ([id])
+GO
+ALTER TABLE [dbo].[usuario_detalles]  WITH CHECK ADD FOREIGN KEY([usuario_id])
+REFERENCES [dbo].[usuarios] ([id])
+GO
+ALTER TABLE [dbo].[usuarios]  WITH CHECK ADD FOREIGN KEY([rol_id])
+REFERENCES [dbo].[roles] ([id])
+GO
+ALTER TABLE [dbo].[pedidos]  WITH CHECK ADD CHECK  (([estado]='cancelado' OR [estado]='completado' OR [estado]='pendiente'))
+GO
+ALTER TABLE [dbo].[productos]  WITH CHECK ADD CHECK  (([tipo]='software' OR [tipo]='juego'))
+GO
+USE [master]
+GO
+ALTER DATABASE [bdg3] SET  READ_WRITE 
+GO

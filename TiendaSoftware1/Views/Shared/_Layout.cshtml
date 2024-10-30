@@ -16,7 +16,7 @@
         <nav class="navbar navbar-expand-sm navbar-light">
             <div class="container-fluid d-flex align-items-center">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/assets/logo_la_fortaleza.gif" alt="Logo" style="height: 150px; width: auto; margin-left: 30px; margin-top: 35px;">
+                    <img src="~/assets/logo_la_fortaleza.png" alt="Logo" class="logo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,40 +24,52 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto d-flex align-items-center">
                         <li class="nav-item">
-                            <!--<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>-->
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>                            
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Comunidad</a>
                         </li>
-                        <li class="nav-item">
+                        @* <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionUsuarios">Gestionar Usuarios</a>
-                        </li>
+                        </li> *@
                     </ul>
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
-                        <img src="~/assets/tipito_mago.gif" alt="Logo" style="height: 150px; width: auto; margin-left: 30px; margin-top: 0px;">
                         @if (Context.Session.GetString("email") != null)
                         {
-                            <div class="user-info text-center">
-                                <!-- Nuevo contenedor para los datos del usuario -->
-                                <div class="logout">
-                                    <a class="nav-link" asp-action="Logout" asp-controller="Home" style="color: blue;">Salir</a>
+                            <a href="@Url.Action("Carrito", "Carrito")">
+                                <img class="logoCarrito" src="~/assets/carrito1.png" alt="Carrito">
+                            </a>
+
+                            /*aca hay que poner un if preguntando si el usuario es administrador*/
+                            <div class="dropdown">
+                                <button class="dropdown-toggle">Admin</button>
+                                <div class="dropdown-content">
+                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionUsuarios">Gestionar Usuarios</a>
                                 </div>
-                                <div class="user-details">
-                                    <span class="nav-link">
-                                        <strong>@Context.Session.GetString("nombre")</strong>
-                                        <br />
-                                        <small>@Context.Session.GetString("email")</small>
-                                    </span>
-                                </div>
+                            </div>
+
+
+
+                            <strong class="nombre-usuario">@Context.Session.GetString("nombre")</strong>
+                            <div class="logout">
+                                <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
 
                             </div>
+                                
+                            
+
+
                         }
                         else
                         {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Signup">Registrarse</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Ingresar</a>
-                            </li>
+                            @* <li class="nav-item"> *@
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Signup">SignUp</a>
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
+                            @* </li> *@
+                            
+                                
+
+                            
                         }
+                        <!--<img class= "maguito" src="~/assets/tipito_mago.png" alt="Logo" class="logo-tipo">-->
                     </ul>
                 </div>
             </div>

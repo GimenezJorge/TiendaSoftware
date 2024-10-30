@@ -6,7 +6,7 @@ showSlide(currentSlideIndex);
 // Cambia automáticamente cada 10 segundos
 setInterval(() => {
     nextSlide();
-}, 10000);
+}, 6000);
 
 function showSlide(index) {
     const slides = document.querySelector('.slides');

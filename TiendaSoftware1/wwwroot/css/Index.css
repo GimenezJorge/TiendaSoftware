@@ -1,118 +1,100 @@
-/* Estilos generales */
-* {
-    border-radius: 0 !important;
+/* contenedor 1*/
+/*
+main.pb-3 {    
+    background-color: #3067ba;
 }
+*/
 
-img {
-    border-radius: 150px !important;
+/* contenedor 2*/
+/*
+.seccion {    
+    background-color: red
+    
 }
+*/
 
-/* Estilos para secciones */
-.seccion {
-    padding: 20px; /* Espaciado en la sección */
-}
-
+/* por si le quiero agregar un titulo despues*/
+/*
 .seccion-titulo {
-    font-size: 24px; /* Tamaño del título de la sección */
+    font-size: 24px; 
 }
+*/
 
-/* Estilos para el contenedor principal */
 #main-container {
-    max-width: 1000px; /* Fijamos el ancho del contenedor */
-    margin: auto; /* Centrar el contenedor */
+    max-width: 900px; 
 }
-
 .game {
-    flex: 1 0 25%; /* Cambiar a 25% para permitir un tamaño mayor de la imagen */
-    margin: 0; /* Sin margen entre los juegos */
-    text-align: center; /* Centrar el texto */
-    overflow: hidden; /* Ocultar el desbordamiento */
-    transition: transform 0.2s ease; /* Transición más rápida para el contenedor */
-    padding: 5%; /* Añadimos un padding para agrandar el contenedor */
-    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
-    border-radius: 110px !important; /* Bordes redondeados por defecto */
+    flex: 1 0 25%;
+    margin:0; 
+    text-align: center;     
+    padding: 4%;        
+}  
+.game:nth-child(n+4) {
+    margin-top: 30px; 
+}   
+.game img {
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
+    height: auto;
+    
+    border-radius: 15px !important;    
+}    
+/* Hover en las imagenes */
+.game:hover img {
+    
+    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 15px !important;
+    width: 99%;
 }
-
-    /* Margen superior para las imágenes de la segunda fila */
-    .game:nth-child(n+4) {
-        margin-top: 10px; /* Margen superior de 10px */
-    }
-
-    /* Ajuste para hacer que las imágenes sean más grandes (70% a 84%) */
-    .game img {
-        width: 84%; /* Aumentamos el tamaño de la imagen al 84% */
-        height: auto; /* Mantiene la proporción de la imagen */
-        transition: transform 0.1s ease !important; /* Transición más lenta para la imagen */
-    }
-
-    /* Hover en las imágenes */
-    .game:hover img {
-        transform: scale(1.06); /* Aumenta el tamaño de la imagen al 106% */
-        border-radius: 0; /* Elimina el redondeado al hacer hover */
-    }
-
-    .game:hover {
-        transform: scale(1.02); /* Aumenta el tamaño del contenedor al 102% */
-    }
-
+/* Hover en el texto */
+.game:hover {
+    
+}
 .game-title {
     color: gold;
     font-weight: bold;
-    text-shadow: 3px 3px 1px rgba(0, 0, 0, 1);
+    text-shadow: 3px 3px 1px rgba(0, 0, 0, 1);    
+    margin-bottom: 50px;
+    font-size: 2vw;
     transform: rotate(-10deg);
-    margin-bottom: 20px;
-    font-size: 1.5vw; /* Ajusta el tamaño de la fuente */
 }
-
-
-/* Estilos para mensajes de éxito */
-.alert {
-    padding: 15px; /* Espaciado en el mensaje */
-    margin-top: 20px; /* Espaciado superior */
-}
-
-.alert-success {
-    background-color: #4CAF50; /* Color de fondo para el mensaje de éxito */
-    color: white; /* Color del texto */
-}
-
-/* Carrusel de imágenes */
+/* Carrusel de imagenes */
 .carousel {
+    margin-top: 20px;
+    border-radius: 5px !important;
+    width: 100%;
+    max-width: 1800px;    
     position: relative;
-    max-width: 100%;
-    height: 400px; /* Altura del carrusel */
-    overflow: hidden; /* Para que las imágenes no desborden */
+    overflow: hidden;
+    
 }
-
 .slides {
-    display: flex; /* Hace que las imágenes se alineen horizontalmente */
-    transition: transform 0.5s ease-in-out; /* Animación suave de deslizamiento */
+    display: flex;
+    transition: transform 0.5s linear;
+    object-fit: cover;
 }
-
-    .slides img {
-        border-radius: 0px !important;
-        width: 100%; /* Cada imagen ocupa todo el ancho del carrusel */
-        height: 100%;
-        object-fit: cover;
-        flex-shrink: 0; /* Evita que las imágenes se reduzcan */
-    }
-
+.slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 1;
+    object-fit:fill;
+}
 .dots {
     text-align: center;
-    margin-top: 10px;
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
 }
-
 .dot {
-    height: 15px;
-    width: 15px;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
     margin: 0 5px;
     background-color: #bbb;
     border-radius: 50%;
-    display: inline-block;
     cursor: pointer;
 }
 
-    .dot.active {
-        background-color: #717171;
-    }
-    
+.dot.active {
+    background-color: #717171;
+}
