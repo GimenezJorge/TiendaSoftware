@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Productos Nintendo</title>
+    <title>Productos</title>
+    <link rel="stylesheet" href="~/css/listaProd.css" />
 </head>
 <body>
-    <h1>Productos Nintendo</h1>
+
 
     @if (!Model.Any())
     {
@@ -17,7 +18,7 @@
         <ul>
             @foreach (var producto in Model)
             {
-                <li>
+                <li class="prod">
                     <h2>@producto.Nombre</h2>
                     <p>@producto.Descripcion</p>
                     <p>Precio: @producto.Precio</p>
@@ -26,8 +27,10 @@
                     <img src="@Url.Content(producto.ImagenUrl)" alt="@producto.Nombre" />
 
                     <!-- Botón para agregar al carrito -->
-                    <button type="button" onclick="agregarAlCarrito(@producto.Id)">Agregar al Carrito</button>
-                    <input type="number" id="cantidad_@producto.Id" value="1" min="1" max="@producto.Stock" style="width: 50px; margin-left: 10px;" />
+                    <div class="boton_cont_carrito">
+                        <button class="btn_agregar_carrito" type="button" onclick="agregarAlCarrito(@producto.Id)">Agregar al Carrito</button>
+                        <input type="number" id="cantidad_@producto.Id" value="1" min="1" max="@producto.Stock" style="width: 50px; margin-left: 10px;" />
+                    </div>
                 </li>
             }
         </ul>

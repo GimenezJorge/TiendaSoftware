@@ -1,0 +1,35 @@
+.body {
+    padding: 20px;
+}
+
+.prod {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    padding: 50px;    
+}
+
+.boton_cont_carrito {
+    display: flex;
+    align-self: flex-end;
+}
+
+.btn_agregar_carrito {
+    border-radius: 5px;
+    background-color: #DC3545;
+    position: relative;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
+    padding: 3px;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+    .btn_agregar_carrito:hover {
+        color: gold;
+        transition: 0.1s;
+        background-color: #BB2D3B;
+        transition: 0.2s;
+    }
