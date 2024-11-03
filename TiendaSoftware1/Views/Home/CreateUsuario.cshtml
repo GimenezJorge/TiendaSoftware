@@ -1,21 +1,19 @@
 ﻿@model TiendaSoftware1.Models.Usuario
 
 @{
-    ViewData["Title"] = "EditUsuario";
+    ViewData["Title"] = "Create Usuario";
 }
 
-<h1>EditUsuario</h1>
+<h1>Create Usuario</h1>
 
 <h4>Usuario</h4>
 <hr />
 <div class="row">
-        <div id="main-container" class="container">
-            <div class="form-wrapper">
-            <form asp-action="EditUsuario" method="post">
-                <input type="hidden" asp-for="Id" />
-
+    <div class="col-md-4"></div>
+    <div id="main-container" class="container">
+        <div class="form-wrapper">
+            <form asp-action="CreateUsuario">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
                 <div class="form-group">
                     <label asp-for="Nombre" class="control-label"></label>
                     <input asp-for="Nombre" class="form-control" />
@@ -35,17 +33,26 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" value="Update" class="btn btn-primary" />
+                    <label asp-for="ReClave" class="control-label"></label>
+                    <input asp-for="ReClave" class="form-control" type="password" />
+                    <span asp-validation-for="ReClave" class="text-danger"></span>
+                </div>
+
+                <!-- Mensaje de notificación si hay algún problema -->
+                <div class="form-group text-danger">
+                    <label>@ViewBag.Notification</label>
+                </div>
+
+                <!-- Botones alineados a la derecha debajo del formulario -->
+                <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 15px;">
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }

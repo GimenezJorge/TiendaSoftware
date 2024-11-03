@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TiendaSoftware1.Models.Producto>
+
+@{
+    ViewData["Title"] = "Gestión de Productos";
+}
+
+<!-- Contenedor para el título y el botón "Crear Producto" -->
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <h1>Gestión de Productos</h1>
+    <a asp-action="CreateProducto" class="btn btn-primary" style="margin-bottom: 10px;">
+        Crear Producto
+    </a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().Id)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Descripcion)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Precio)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Stock)</th>
+            <th>@Html.DisplayNameFor(model => model.First().FechaLanzamiento)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Tipo)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                <td>@Html.DisplayFor(modelItem => item.Precio)</td>
+                <td>@Html.DisplayFor(modelItem => item.Stock)</td>
+                <td>@(item.FechaLanzamiento?.ToString("dd/MM/yyyy") ?? "N/A")</td>
+                <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
+                <td>
+                    <a asp-action="EditProducto" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a>
+  
+                    <a asp-action="DeleteProducto" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Estilos CSS opcionales -->
+<style>
+    .btn {
+        margin-right: 5px; /* Espacio entre los botones */
+    }
+</style>
