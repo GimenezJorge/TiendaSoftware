@@ -25,15 +25,13 @@
                     <ul class="navbar-nav me-auto d-flex align-items-center">
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>                            
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Comunidad</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Comunidad">Comunidad</a>
                         </li>
                         @* <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionUsuarios">Gestionar Usuarios</a>
                         *@
 
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionProductos">Gestionar Productos</a>
-                        </li>
+                    
 
                     </ul>
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
@@ -43,38 +41,25 @@
                                 <img class="logoCarrito" src="~/assets/carrito1.png" alt="Carrito">
                             </a>
 
-                            /*aca hay que poner un if preguntando si el usuario es administrador*/
+                            <!-- Aquí puedes agregar la lógica para verificar si el usuario es administrador -->
                             <div class="dropdown">
                                 <button class="dropdown-toggle">Admin</button>
                                 <div class="dropdown-content">
                                     <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionUsuarios">Gestionar Usuarios</a>
+                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionProductos">Gestionar Productos</a>
                                 </div>
                             </div>
 
-
-
-                            <strong class="nombre-usuario">@Context.Session.GetString("nombre")</strong>
+                            <strong class="nombre-usuario">@Context.Session.GetString("nombre")</strong> <!-- Mostrar el nombre del usuario -->
                             <div class="logout">
                                 <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
-
                             </div>
-                                
-                            
-
-
                         }
                         else
                         {
-                            @* <li class="nav-item"> *@
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Signup">SignUp</a>
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
-                            @* </li> *@
-                            
-                                
-
-                            
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Signup">SignUp</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
                         }
-                        <!--<img class= "maguito" src="~/assets/tipito_mago.png" alt="Logo" class="logo-tipo">-->
                     </ul>
                 </div>
             </div>

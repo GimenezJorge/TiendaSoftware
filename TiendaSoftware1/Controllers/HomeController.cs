@@ -21,6 +21,11 @@ namespace TiendaSoftware1.Controllers
             return View(productos);
         }
 
+        public IActionResult Comunidad()
+        {
+            return View();
+        }
+
         // --------- CRUD USUARIOS ---------
 
 
@@ -146,6 +151,16 @@ namespace TiendaSoftware1.Controllers
                 return NotFound();
             }
 
+            // Verificar si el usuario eliminado es el usuario en sesión
+            if (HttpContext.Session.GetString("email") == usuario.Email)
+            {
+                // Cerrar sesión eliminando las variables de sesión
+                HttpContext.Session.Remove("email");
+                HttpContext.Session.Remove("clave");
+
+                return RedirectToAction("Index", "Home");
+            }
+
             db.Usuarios.Remove(usuario);
             await db.SaveChangesAsync();
             return RedirectToAction(nameof(GestionUsuarios));
@@ -191,6 +206,7 @@ namespace TiendaSoftware1.Controllers
                 // Guardar información de sesión
                 HttpContext.Session.SetString("email", usuario.Email.ToString());
                 HttpContext.Session.SetString("clave", usuario.Password.ToString());
+                HttpContext.Session.SetString("nombre", usuario.Nombre.ToString());
 
                 // Almacenar el mensaje de éxito en TempData
                 TempData["SuccessMessage"] = "Cuenta creada con éxito";

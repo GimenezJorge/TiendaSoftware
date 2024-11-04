@@ -4,10 +4,8 @@
     ViewData["Title"] = "Gestión de Usuarios";
 }
 
-
 <h1>Gestión de Usuarios</h1>
 
-<!-- Contenedor para el botón "Crear Usuario", alineado a la derecha -->
 <div style="display: flex; justify-content: flex-end; margin-bottom: 15px;">
     <a asp-action="CreateUsuario" class="btn btn-primary">
         Crear Usuario
@@ -20,8 +18,7 @@
             <th>@Html.DisplayNameFor(model => model.First().Id)</th>
             <th>@Html.DisplayNameFor(model => model.First().Nombre)</th>
             <th>@Html.DisplayNameFor(model => model.First().Email)</th>
-            <th>@Html.DisplayNameFor(model => model.First().Password)</th>
-            <th>Acciones</th> <!-- Cambiado para ser más descriptivo -->
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -31,11 +28,7 @@
                 <td>@Html.DisplayFor(modelItem => item.Id)</td>
                 <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
                 <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                <td>@Html.DisplayFor(modelItem => item.Password)</td>
                 <td>
-                    <!-- Usando botones para las acciones -->
-                    <a asp-action="EditUsuario" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Editar</a>
-   
                     <a asp-action="DeleteUsuario" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Eliminar</a>
                 </td>
             </tr>
@@ -48,4 +41,4 @@
     .btn {
         margin-right: 5px; /* Espacio entre los botones */
     }
-  </style>
+</style>

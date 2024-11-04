@@ -69,7 +69,6 @@
         </div>
     </div>
 
-    <!-- Mensaje de éxito -->
     @if (TempData["SuccessMessage"] != null)
     {
         <div id="success-message" class="alert alert-success">
@@ -78,19 +77,19 @@
     }
 
     <script>
-        setTimeout(function () {
-            var successMessage = document.getElementById('success-message');
-            if (successMessage) {
-                successMessage.style.transition = "opacity 1s ease";
-                successMessage.style.opacity = "0";
+    setTimeout(function () {
+        var successMessage = document.getElementById('success-message');
+        if (successMessage) {
+            successMessage.style.transition = "opacity 1s ease";
+            successMessage.style.opacity = "0";
 
-                // lo eliminamos del DOM
-                setTimeout(function () {
-                    successMessage.remove();
-                }, 1000); // Espera el tiempo de la transición (1 segundo)
-            }
-        }, 5000); // 5000 milisegundos = 5 segundos
-    </script>
+            // Eliminar el mensaje del DOM después de la transición
+            setTimeout(function () {
+                successMessage.remove();
+            }, 1000); // 1 segundo de transición
+        }
+    }, 5000); // 5 segundos antes de comenzar a desvanecer
+</script>
 
 </body>
 <!-- fusion -->
