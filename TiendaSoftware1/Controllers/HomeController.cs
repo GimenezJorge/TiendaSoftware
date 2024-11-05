@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -44,13 +45,14 @@ namespace TiendaSoftware1.Controllers
             if (db.Usuarios.Any(x => x.Email == usuario.Email))
             {
                 ViewBag.Notification = "Este usuario ya existe";
-                return View(); // Si existe, recargar el formulario de creación
+                return View(usuario); // Volver a mostrar el formulario con los datos ingresados
             }
             else
             {
-                // Asignar rol predeterminado
+                // Asignar rol predeterminado (Usuario)
                 usuario.RolId = 1;
 
+                // Agregar el nuevo usuario a la base de datos
                 db.Usuarios.Add(usuario);
                 db.SaveChanges();
 
@@ -61,6 +63,7 @@ namespace TiendaSoftware1.Controllers
         }
 
         // Leer usuarios (Read)
+       
         public IActionResult GestionUsuarios()
         {
             return View(db.Usuarios.ToList());
@@ -234,6 +237,7 @@ namespace TiendaSoftware1.Controllers
                 HttpContext.Session.SetString("email", checkLogin.Email);   
                 HttpContext.Session.SetString("nombre", checkLogin.Nombre); 
                 HttpContext.Session.SetString("clave", checkLogin.Password);
+                HttpContext.Session.SetString("rol_id", checkLogin.RolId.ToString());
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -275,8 +279,10 @@ namespace TiendaSoftware1.Controllers
 
 
         //---------------PRODUCTOS
+        
         public IActionResult GestionProductos()
         {
+
             return View(db.Productos.ToList());
         }
 

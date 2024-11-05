@@ -41,16 +41,18 @@
                                 <img class="logoCarrito" src="~/assets/carrito1.png" alt="Carrito">
                             </a>
 
-                            <!-- Aquí puedes agregar la lógica para verificar si el usuario es administrador -->
-                            <div class="dropdown">
-                                <button class="dropdown-toggle">Admin</button>
-                                <div class="dropdown-content">
-                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionUsuarios">Gestionar Usuarios</a>
-                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionProductos">Gestionar Productos</a>
+                           
+                            
+                                <div class="dropdown">
+                                    <button class="dropdown-toggle">Admin</button>
+                                    <div class="dropdown-content">
+                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionUsuarios">Gestionar Usuarios</a>
+                                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionProductos">Gestionar Productos</a>
+                                    </div>
                                 </div>
-                            </div>
+                            
 
-                            <strong class="nombre-usuario">@Context.Session.GetString("nombre")</strong> <!-- Mostrar el nombre del usuario -->
+                            <strong class="nombre-usuario">@Context.Session.GetString("nombre")</strong>
                             <div class="logout">
                                 <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
                             </div>
