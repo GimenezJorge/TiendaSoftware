@@ -1,0 +1,30 @@
+-- Insertar productos en la tabla productos
+
+-- Consolas
+INSERT INTO productos (nombre, descripcion, precio, stock, fecha_lanzamiento, tipo, imagen_url) VALUES 
+('Nintendo Switch', 'Consola híbrida de Nintendo que se puede usar como portátil o conectada al televisor.', 299.99, 8, '2017-03-03', 'nintendo', '~/assets/nintendo_switch.jpg'),
+('Nintendo 3DS', 'Consola portátil de Nintendo con pantalla 3D sin gafas y juegos exclusivos.', 169.99, 5, '2011-02-26', 'nintendo', '~/assets/nintendo_3ds.jpg'),
+('Nintendo Wii U', 'Consola de sobremesa de Nintendo con pantalla táctil en el control.', 249.99, 6, '2012-11-18', 'nintendo', '~/assets/nintendo_wii_u.jpg'),
+('Playstation 3', 'Consola de videojuegos de Sony, famosa por sus exclusivos y capacidad Blu-Ray.', 199.99, 7, '2006-11-11', 'playstation', '~/assets/playstation_3.jpg'),
+('Playstation 4', 'Consola de Sony con juegos exclusivos y soporte para realidad virtual.', 399.99, 9, '2013-11-15', 'playstation', '~/assets/playstation_4.jpg'),
+('Playstation 5', 'La última consola de Sony, con gráficos 4K y soporte para ray tracing.', 499.99, 10, '2020-11-12', 'playstation', '~/assets/playstation_5.jpg'),
+('Xbox Series S', 'Consola de Microsoft con un enfoque en el rendimiento y la accesibilidad a 1440p.', 299.99, 6, '2020-11-10', 'xbox', '~/assets/xbox_series_s.jpg'),
+('Xbox Series X', 'La consola más potente de Microsoft, con soporte para 4K y ray tracing.', 499.99, 8, '2020-11-10', 'xbox', '~/assets/xbox_series_x.jpg'),
+
+-- Accesorios
+('Joystick Playstation 3', 'Controlador inalámbrico para la Playstation 3.', 49.99, 10, NULL, 'accesorios', '~/assets/accesorio1.jpg'),
+('Joystick Playstation 4', 'Controlador inalámbrico para la Playstation 4.', 59.99, 10, NULL, 'accesorios', '~/assets/accesorio2.jpg'),
+('Mando Pro Controller Switch', 'Controlador inalámbrico para Nintendo Switch.', 69.99, 10, NULL, 'accesorios', '~/assets/accesorio3.jpg'),
+
+-- Consolas usadas
+('Nintendo Wii Usada', 'Consola Nintendo Wii en buenas condiciones, ideal para juegos familiares.', 99.99, 5, NULL, 'consolas_usado', '~/assets/consolausada1.jpg'),
+('Playstation 3 Usada', 'Consola Playstation 3 usada, perfecta para jugar títulos clásicos.', 89.99, 4, NULL, 'consolas_usado', '~/assets/consolausada2.jpg'),
+('Nintendo Gamecube Usada', 'Consola Nintendo Gamecube en buen estado, con juegos retro disponibles.', 79.99, 3, NULL, 'consolas_usado', '~/assets/consolausada3.jpg'),
+
+-- Juegos usados
+('The Legend of Zelda: Breath of the Wild', 'Aclamado juego de aventuras en mundo abierto para Nintendo Switch.', 39.99, 7, '2017-03-03', 'juegos_usado', '~/assets/juego1.jpg'),
+('God of War', 'Aventura épica de acción y mitología nórdica para Playstation 4.', 29.99, 6, '2018-04-20', 'juegos_usado', '~/assets/juego2.jpg'),
+('Halo: The Master Chief Collection', 'Colección de juegos icónicos de Halo para Xbox One.', 24.99, 5, '2014-11-11', 'juegos_usado', '~/assets/juego3.jpg'),
+('Super Mario Odyssey', 'Diversión y aventura en 3D con Mario en este querido título de Nintendo.', 34.99, 8, '2017-10-27', 'juegos_usado', '~/assets/juego4.jpg'),
+('The Witcher 3: Wild Hunt', 'Juego de rol aclamado por la crítica, con un mundo abierto rico en detalles y narración.', 39.99, 4, '2015-05-19', 'juegos_usado', '~/assets/juego5.jpg'),
+('Spider-Man', 'Juego de acción y aventura de mundo abierto protagonizado por el famoso superhéroe de Marvel.', 29.99, 5, '2018-09-07', 'juegos_usado', '~/assets/juego6.jpg');
