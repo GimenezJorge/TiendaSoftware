@@ -1,48 +1,63 @@
 ﻿@model TiendaSoftware1.Models.Carrito
 
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="~/css/site.css" /> <!-- Enlaza tu CSS principal -->
 </head>
 <body>
-    <h1>Carrito de Compras</h1>
+    <div class="container-carrito">
+        <h1>Carrito de Compras</h1>
 
-    @if (ViewBag.Mensaje != null)
-    {
-        <p style="color: red;">@ViewBag.Mensaje</p> <!-- Mensaje de error -->
-    }
+        @if (ViewBag.Mensaje != null)
+        {
+            <p class="mensaje-error">@ViewBag.Mensaje</p>
+        }
 
-    @if (!Model.CarritoProductos.Any())
-    {
-        <p>No hay productos en el carrito.</p>
-    }
-    else
-    {
-        <ul>
-            @foreach (var carritoProducto in Model.CarritoProductos)
-            {
-                <li>
-                    <h2>@carritoProducto.Producto.Nombre</h2>
-                    <p>Precio: @carritoProducto.Producto.Precio</p>
-                    <p>Cantidad: @carritoProducto.Cantidad</p>
-                    <p>Subtotal: @((carritoProducto.Producto.Precio * carritoProducto.Cantidad).ToString("C"))</p>
+        @if (!Model.CarritoProductos.Any())
+        {
+            <p>No hay productos en el carrito.</p>
+        }
+        else
+        {
+            <div class="productos-carrito">
+                @foreach (var carritoProducto in Model.CarritoProductos)
+                {
+                    <div class="producto-item">
+                        <!-- Nombre del producto -->
+                        <h2>@carritoProducto.Producto.Nombre</h2>
 
-                    <!-- Muestra la imagen del producto con un tamaño mayor -->
-                    <img src="@Url.Content(carritoProducto.Producto.ImagenUrl)" alt="@carritoProducto.Producto.Nombre" style="width: 150px; height: auto;" />
+                        <!-- Imagen del producto -->
+                        <img src="@Url.Content(carritoProducto.Producto.ImagenUrl)" alt="@carritoProducto.Producto.Nombre" class="imagen-producto" />
 
-                    <!-- Botón para quitar del carrito -->
-                    <form action="@Url.Action("QuitarDelCarrito", "Carrito")" method="post">
-                        <input type="hidden" name="productoId" value="@carritoProducto.ProductoId" />
-                        <button type="submit">Quitar del Carrito</button>
-                    </form>
-                </li>
-            }
-        </ul>
+                        <!-- Detalles del producto -->
+                        <p><strong>Precio:</strong> @carritoProducto.Producto.Precio.ToString("C")</p>
+                        <p><strong>Cantidad:</strong> @carritoProducto.Cantidad</p>
+                        <p><strong>Subtotal:</strong> @((carritoProducto.Producto.Precio * carritoProducto.Cantidad).ToString("C"))</p>
 
-        <p>Total: @((Model.CarritoProductos.Sum(cp => cp.Producto.Precio * cp.Cantidad)).ToString("C"))</p>
-    }
+                        <!-- Botón para quitar del carrito -->
+                        <form action="@Url.Action("QuitarDelCarrito", "Carrito")" method="post">
+                            <input type="hidden" name="productoId" value="@carritoProducto.ProductoId" />
+                            <button type="submit" class="btn-quitar">Quitar del Carrito</button>
+                        </form>
+                    </div>
+                }
+            </div>
 
-    <a href="@Url.Action("Index", "Home")">Seguir comprando</a>
+            <!-- Total del carrito -->
+            <p class="total-carrito"><strong>Total: @((Model.CarritoProductos.Sum(cp => cp.Producto.Precio * cp.Cantidad)).ToString("C"))</strong></p>
+        }
+
+        <!-- Botón para seguir comprando -->
+        <a href="@Url.Action("Index", "Home")" class="link-volver">Seguir comprando</a>
+
+        <!-- Botón para descargar el PDF -->
+        <div class="pdf-button">
+            <a href="@Url.Action("GenerarPDF", "Carrito")" class="pdf-link">Descargar PDF</a>
+        </div>
+    </div>
 </body>
 </html>

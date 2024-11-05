@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
 }
 
 .image-container {
@@ -26,7 +27,7 @@
     text-align: center;
     width: 80%;
     max-width: 800px;
-    border-radius: 0px;
+    border-radius: 5px;
     font-family: Arial, sans-serif;
 }
 

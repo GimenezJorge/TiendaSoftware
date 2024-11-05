@@ -1,19 +1,22 @@
+/* Estilos generales */
 body {
     background-image: url('/assets/imagenfondo.png');
-    background-color: #DEC59B;    
+    background-color: #DEC59B;
     background-position: bottom;
     display: flex;
     flex-direction: column;
     background-repeat: no-repeat;
     font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
+/* Navbar */
 .navbar {
     background: linear-gradient(to right, #2b5a4a, #ab8d59);
     height: 80px;
     box-shadow: 0 10px 5px rgba(80, 0, 0, 0.3);
     margin-bottom: 60px;
-    padding-top: 0px;
 }
 
 .navbar-brand img {
@@ -22,38 +25,39 @@ body {
     margin-top: 15px;
 }
 
-.navbar-brand img:hover {
-    filter: drop-shadow(-2px 2px 2px rgb(0 0 0));
-}
+    .navbar-brand img:hover {
+        filter: drop-shadow(-2px 2px 2px rgba(0, 0, 0, 0.5));
+    }
 
 .nav-link {
     color: white !important;
-    font-family: poppins !important;
+    font-family: 'Poppins', sans-serif !important;
     font-size: 20px;
     margin-top: 10px;
 }
 
-.nav-link:hover {
-    color: gold !important;
-    text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
-}
+    .nav-link:hover {
+        color: gold !important;
+        text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
+    }
 
 .nav-item {
     display: flex;
     flex-direction: row;
 }
-.nombre-usuario {  
+
+.nombre-usuario {
     margin-top: 10px;
     color: white;
     text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
     font-size: 20px;
-    
 }
 
     .nombre-usuario:hover {
         color: white;
     }
 
+/* Footer */
 footer {
     padding: 10px;
     text-align: center;
@@ -62,39 +66,41 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Información de usuario */
 .user-info {
     display: flex;
     align-items: center; /* Alinea verticalmente el carrito y el nombre del usuario */
-    color: white; /* Ajusta el color del texto según sea necesario */
+    color: white;
 }
 
 .user-details {
-    margin-top: 0px;
+    margin-top: 0;
     margin-left: 30px;
     display: flex;
-    flex-direction: row; /* Alinea el nombre y salir en columna */
-    align-items: flex-end; /* Alinea al final del eje transversal (derecha) */
-    text-align: right; /* Asegura que el texto esté alineado a la derecha */
+    flex-direction: row;
+    align-items: flex-end;
+    text-align: right;
 }
 
-
-
+/* Dropdown */
 .dropdown {
     border-radius: 5px;
     background-color: #DC3545;
-    position: relative;    
+    position: relative;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
     margin-top: 10px;
     margin-right: 30px;
 }
 
-.dropdown:hover {
-    transition: 0.1s;
-    background-color: #BB2D3B
-}
+    .dropdown:hover {
+        transition: 0.1s;
+        background-color: #BB2D3B;
+    }
+
 .dropdown-toggle {
     background: none;
     color: white;
@@ -106,23 +112,23 @@ footer {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #2b5a4a; /* Ajusta el color si es necesario */
+    background-color: #2b5a4a;
     min-width: 230px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
-.dropdown-content a {
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 20px;
-}
+    .dropdown-content a {
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 20px;
+    }
 
-.dropdown-content a:hover {
-    background-color: #ab8d59; /* Ajusta el color del hover si es necesario */
-}
+        .dropdown-content a:hover {
+            background-color: #ab8d59;
+        }
 
 .dropdown:hover .dropdown-content {
     display: block;
@@ -132,23 +138,98 @@ footer {
     color: yellow;
 }
 
+/* Estilo del carrito y productos */
+.lista-productos {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 800px;
+}
 
+.producto-item {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.imagen-producto {
+    width: 150px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.mensaje-error {
+    color: red;
+    font-weight: bold;
+}
+
+/* Botón para quitar del carrito */
+.btn-quitar {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+    .btn-quitar:hover {
+        background-color: #45a049;
+    }
+
+/* Botón para descargar PDF */
+.pdf-button {
+    margin-top: 30px;
+    text-align: right;
+}
+
+.pdf-link {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+    .pdf-link:hover {
+        background-color: #45a049;
+    }
+
+/* Botón para seguir comprando */
+.link-volver {
+    display: inline-block;
+    margin-top: 30px;
+    color: #007bff; /* Cambiado a azul */
+    text-decoration: underline;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+    .link-volver:hover {
+        color: #0056b3; /* Azul más oscuro al pasar el cursor */
+    }
+
+/* Icono del carrito */
 .logoCarrito {
     height: 25px;
     width: auto;
-    margin-top: 10px;    
+    margin-top: 10px;
     margin-right: 10px;
-    filter: drop-shadow(-1px 2px 10px rgb(83 40 40));
+    filter: drop-shadow(-1px 2px 10px rgba(83, 40, 40, 0.5));
 }
 
     .logoCarrito:hover {
         cursor: pointer;
     }
-
-/*
-.maguito {    
-    height: 140px !important;
-    margin-top: 60px;
-    height: 120px;
-}
-*/

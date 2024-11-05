@@ -1,6 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewEngines;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using TiendaSoftware1.Models;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace TiendaSoftware1.Controllers
@@ -8,16 +13,17 @@ namespace TiendaSoftware1.Controllers
     public class CarritoController : Controller
     {
         private readonly Bdg3Context _context;
+        private readonly ICompositeViewEngine _viewEngine;
 
-        // Carrito de compras, ahora utilizando un objeto Carrito en vez de una lista de productos.
         private static Carrito _carrito = new Carrito
         {
             CarritoProductos = new List<CarritoProducto>()
         };
 
-        public CarritoController(Bdg3Context context)
+        public CarritoController(Bdg3Context context, ICompositeViewEngine viewEngine)
         {
             _context = context;
+            _viewEngine = viewEngine;
         }
 
         // Método para agregar un producto al carrito
@@ -32,18 +38,15 @@ namespace TiendaSoftware1.Controllers
                 // Verifica si la cantidad total supera el stock
                 if (cantidadActual + cantidad > producto.Stock)
                 {
-                    // Puedes retornar un mensaje o redirigir a la vista con un mensaje
                     return RedirectToAction("Carrito", new { mensaje = "No se puede agregar más productos al carrito, excede el stock disponible." });
                 }
 
                 if (carritoProducto != null)
                 {
-                    // Si el producto ya está en el carrito, simplemente incrementamos la cantidad
                     carritoProducto.Cantidad += cantidad;
                 }
                 else
                 {
-                    // Si no está en el carrito, lo agregamos
                     _carrito.CarritoProductos.Add(new CarritoProducto
                     {
                         ProductoId = producto.Id,
@@ -70,10 +73,54 @@ namespace TiendaSoftware1.Controllers
         }
 
         // Método para mostrar el carrito
-        public IActionResult Carrito(string mensaje = null)
+        public IActionResult Carrito(string? mensaje = null)
         {
-            ViewBag.Mensaje = mensaje; // Pasar mensaje a la vista
-            return View("~/Views/Productos/Carrito.cshtml", _carrito); // Ruta completa a la vista
+            ViewBag.Mensaje = mensaje;
+            return View("~/Views/Productos/Carrito.cshtml", _carrito);
+        }
+
+        // Método para generar el PDF del carrito usando iTextSharp
+        [HttpGet("Carrito/GenerarPDF")]
+        public IActionResult GenerarPDF()
+        {
+            using (var ms = new MemoryStream())
+            {
+                // Crear documento PDF
+                var document = new Document(PageSize.A4);
+                PdfWriter.GetInstance(document, ms).CloseStream = false;
+                document.Open();
+
+                // Título del reporte
+                document.Add(new Paragraph("Carrito de Compras"));
+                document.Add(new Paragraph(" ")); // Espacio en blanco
+
+                // Tabla de productos
+                PdfPTable table = new PdfPTable(4); // 4 columnas: Producto, Cantidad, Precio Unitario, Precio Total
+                table.AddCell("Producto");
+                table.AddCell("Cantidad");
+                table.AddCell("Precio Unitario");
+                table.AddCell("Precio Total");
+
+                foreach (var item in _carrito.CarritoProductos)
+                {
+                    table.AddCell(item.Producto.Nombre);
+                    table.AddCell(item.Cantidad.ToString());
+                    table.AddCell($"${item.Producto.Precio}");
+                    table.AddCell($"${item.Cantidad * item.Producto.Precio}");
+                }
+
+                // Total del carrito
+                decimal total = _carrito.CarritoProductos.Sum(cp => cp.Cantidad * cp.Producto.Precio);
+                document.Add(table);
+                document.Add(new Paragraph(" "));
+                document.Add(new Paragraph($"Total: ${total}"));
+
+                document.Close();
+                var pdfStream = new MemoryStream(ms.ToArray());
+
+                // Descargar el PDF
+                return File(pdfStream, "application/pdf", "Carrito.pdf");
+            }
         }
     }
 }
