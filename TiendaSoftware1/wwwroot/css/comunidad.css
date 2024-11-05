@@ -1,0 +1,41 @@
+.full-screen-background {
+    position: relative;
+    width: 80vw;
+    height: 120vh;
+    background-color: rgba(0, 0, 0, 0.25); /* Fondo negro con 25% de transparencia */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container {
+    text-align: center;
+}
+
+.large-image {
+    width: 90%;
+    max-width: 1200px;
+    height: auto;
+}
+
+.promo-text {   
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente para el texto */
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 0px;
+    font-family: Arial, sans-serif;
+}
+
+    .promo-text h2 {
+        font-size: 2em; /* Tamaño de fuente más grande para el título */
+        margin-bottom: 10px;
+    }
+
+    .promo-text p {
+        font-size: 1.2em; /* Tamaño de fuente ligeramente mayor para los párrafos */
+        margin: 10px 0;
+    }
