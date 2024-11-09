@@ -24,24 +24,22 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto d-flex align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>                            
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Comunidad">Comunidad</a>
                         </li>
-                        @* <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionUsuarios">Gestionar Usuarios</a>
-                        *@
-
-                    
-
                     </ul>
-                    <ul class="navbar-nav ms-auto d-flex align-items-center">
-                        @if (Context.Session.GetString("email") != null)
-                        {
-                            <a href="@Url.Action("Carrito", "Carrito")">
-                                <img class="logoCarrito" src="~/assets/carrito1.png" alt="Carrito">
-                            </a>
 
-                            <!-- Aquí puedes agregar la lógica para verificar si el usuario es administrador -->
+                    <!-- Los elementos adicionales que no pertenecen a la lista se colocan fuera del <ul> -->
+                    @if (Context.Session.GetString("email") != null)
+                    {
+                        // Recuperamos el roleId desde la sesión
+                        var roleId = Context.Session.GetString("roleId");
+
+                        // Si el roleId es "2" (administrador), mostramos el menú de administración
+                        if (roleId == "2")
+                        {
                             <div class="dropdown">
                                 <button class="dropdown-toggle">Admin</button>
                                 <div class="dropdown-content">
@@ -49,18 +47,22 @@
                                     <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionProductos">Gestionar Productos</a>
                                 </div>
                             </div>
+                        }
 
-                            <strong class="nombre-usuario">@Context.Session.GetString("nombre")</strong> <!-- Mostrar el nombre del usuario -->
-                            <div class="logout">
-                                <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
-                            </div>
-                        }
-                        else
-                        {
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Signup">SignUp</a>
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Login">Login</a>
-                        }
-                    </ul>
+                        <!-- Mostrar el nombre del usuario -->
+                        <strong class="nombre-usuario">@Context.Session.GetString("nombre")</strong>
+
+                        <!-- Botón de logout -->
+                        <div class="logout">
+                            <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <!-- Mostrar las opciones de Login y SignUp si el usuario no está autenticado -->
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="SignUp">SignUp</a>
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="LogIn">Login</a>
+                    }
                 </div>
             </div>
         </nav>

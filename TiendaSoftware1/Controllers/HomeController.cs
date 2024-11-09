@@ -197,8 +197,8 @@ namespace TiendaSoftware1.Controllers
             }
             else
             {
-                // Asignar el rol predeterminado (por ejemplo, RolId = 1 para 'Usuario')
-                usuario.RolId = 1;
+                // Asignar el rol de "usuario normal" por defecto
+                usuario.RolId = 1; // Aseguramos que 1 sea el RolId para "usuario normal"
 
                 db.Usuarios.Add(usuario);
                 db.SaveChanges();
@@ -215,6 +215,7 @@ namespace TiendaSoftware1.Controllers
             }
         }
 
+
         [HttpGet]
         public ActionResult LogIn()
         {
@@ -225,23 +226,28 @@ namespace TiendaSoftware1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogIn(Usuario usuario)
         {
-            var checkLogin = db.Usuarios.Where(x => x.Email.Equals(usuario.Email)
-            && x.Password.Equals(usuario.Password))
+            var checkLogin = db.Usuarios
+                .Where(x => x.Email.Equals(usuario.Email) && x.Password.Equals(usuario.Password))
                 .FirstOrDefault();
 
             if (checkLogin != null)
             {
-                HttpContext.Session.SetString("email", checkLogin.Email);   
-                HttpContext.Session.SetString("nombre", checkLogin.Nombre); 
+                // Guardamos los datos en la sesión
+                HttpContext.Session.SetString("email", checkLogin.Email);
+                HttpContext.Session.SetString("nombre", checkLogin.Nombre);
                 HttpContext.Session.SetString("clave", checkLogin.Password);
+                HttpContext.Session.SetString("roleId", checkLogin.RolId.ToString()); // Guardamos el rol
+
                 return RedirectToAction("Index", "Home");
             }
             else
             {
                 ViewBag.Notification = "Email o clave incorrectas";
             }
+
             return View();
         }
+
 
 
         public ActionResult Logout()
