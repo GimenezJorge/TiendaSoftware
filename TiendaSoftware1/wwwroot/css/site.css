@@ -1,23 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
-
-
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -25,10 +23,9 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
-    font-weight: 600; /* para t�tulos m�s gruesos */
+    font-weight: 600; /* para títulos más gruesos */
 }
 
 p, a, li {
@@ -36,10 +33,7 @@ p, a, li {
     font-weight: 400; /* para texto normal */
 }
 
-
-
-
-/* Estilo para la secci�n */
+/* Estilo para la sección */
 .seccion {
     margin: 40px 0;
     text-align: center;
@@ -64,15 +58,13 @@ p, a, li {
         width: 100%;
         height: auto;
         border-radius: 8px;
-        
     }
 
     /* Efecto hover sobre la imagen */
     .game:hover img {
-        
     }
 
-/* T�tulo dentro de la imagen */
+/* Título dentro de la imagen */
 .game-title {
     position: absolute;
     bottom: 0;
@@ -92,8 +84,6 @@ p, a, li {
     flex-wrap: wrap;
 }
 
-
-
 .row {
     display: flex;
     gap: 20px;
@@ -101,18 +91,17 @@ p, a, li {
     justify-content: center;
 }
 
-
 .form-wrapper {
     /* Permite que el formulario no se vea afectado por flexbox */
-    display: block; /* Asegura que el formulario ocupe su tama�o natural */
-    width: 100%; /* O un ancho espec�fico si lo deseas */
-    max-width: 400px; /* Ancho m�ximo para el formulario */
+    display: block; /* Asegura que el formulario ocupe su tamaño natural */
+    width: 100%; /* O un ancho específico si lo deseas */
+    max-width: 400px; /* Ancho máximo para el formulario */
     margin: 0 auto; /* Centrar el formulario dentro de su columna */
 }
-form {
-    width: 100%; /* Aseg�rate de que el formulario use todo el ancho disponible */
-}
 
+form {
+    width: 100%; /* Asegúrate de que el formulario use todo el ancho disponible */
+}
 
 .alert-success {
     color: #155724;
@@ -121,6 +110,27 @@ form {
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 4px;
-    transform:translate(330px, 10px);
-    width:230px;
+    transform: translate(330px, 10px);
+    width: 230px;
 }
+
+/* Modificación en el botón "Finalizar Compra" */
+button {
+    background-color: #4CAF50; /* Cambiado a verde */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }

@@ -41,7 +41,7 @@
                         <!-- Botón para quitar del carrito -->
                         <form action="@Url.Action("QuitarDelCarrito", "Carrito")" method="post">
                             <input type="hidden" name="productoId" value="@carritoProducto.ProductoId" />
-                            <button type="submit" class="btn-quitar">Quitar del Carrito</button>
+                            <button type="submit" class="btn">Quitar del Carrito</button>
                         </form>
                     </div>
                 }
@@ -49,11 +49,6 @@
 
             <!-- Total del carrito -->
             <p class="total-carrito"><strong>Total: @((Model.CarritoProductos.Sum(cp => cp.Producto.Precio * cp.Cantidad)).ToString("C"))</strong></p>
-
-            <!-- Botón para finalizar compra -->
-            <form action="@Url.Action("FinalizarCompra", "Carrito")" method="post">
-                <button type="submit" class="btn-finalizar-compra">Finalizar compra</button>
-            </form>
         }
 
         <!-- Botón para seguir comprando -->
@@ -63,6 +58,12 @@
         <div class="pdf-button">
             <a href="@Url.Action("GenerarPDF", "Carrito")" class="pdf-link">Descargar PDF</a>
         </div>
+
+        <!-- Botón para finalizar compra -->
+        <form action="@Url.Action("FinalizarCompra", "Carrito")" method="post">
+            <button type="submit" class="btn btn-primary">Finalizar compra</button>
+        </form>
+
     </div>
 </body>
 </html>
