@@ -49,6 +49,11 @@
 
             <!-- Total del carrito -->
             <p class="total-carrito"><strong>Total: @((Model.CarritoProductos.Sum(cp => cp.Producto.Precio * cp.Cantidad)).ToString("C"))</strong></p>
+
+            <!-- Botón para finalizar compra -->
+            <form action="@Url.Action("FinalizarCompra", "Carrito")" method="post">
+                <button type="submit" class="btn-finalizar-compra">Finalizar compra</button>
+            </form>
         }
 
         <!-- Botón para seguir comprando -->

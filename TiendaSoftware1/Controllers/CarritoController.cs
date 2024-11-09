@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewEngines;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using TiendaSoftware1.Models;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
@@ -13,17 +11,14 @@ namespace TiendaSoftware1.Controllers
     public class CarritoController : Controller
     {
         private readonly Bdg3Context _context;
-        private readonly ICompositeViewEngine _viewEngine;
-
         private static Carrito _carrito = new Carrito
         {
             CarritoProductos = new List<CarritoProducto>()
         };
 
-        public CarritoController(Bdg3Context context, ICompositeViewEngine viewEngine)
+        public CarritoController(Bdg3Context context)
         {
             _context = context;
-            _viewEngine = viewEngine;
         }
 
         // Método para agregar un producto al carrito
@@ -121,6 +116,45 @@ namespace TiendaSoftware1.Controllers
                 // Descargar el PDF
                 return File(pdfStream, "application/pdf", "Carrito.pdf");
             }
+        }
+
+        // Método para finalizar la compra
+        [HttpPost]
+        public IActionResult FinalizarCompra()
+        {
+            if (_carrito.CarritoProductos.Any())
+            {
+                foreach (var carritoProducto in _carrito.CarritoProductos)
+                {
+                    var producto = _context.Productos.FirstOrDefault(p => p.Id == carritoProducto.ProductoId);
+                    if (producto != null)
+                    {
+                        // Descontar el stock de cada producto comprado
+                        if (producto.Stock >= carritoProducto.Cantidad)
+                        {
+                            producto.Stock -= carritoProducto.Cantidad;
+                            _context.SaveChanges();
+                        }
+                        else
+                        {
+                            // Si no hay suficiente stock, mostrar un mensaje de error
+                            return RedirectToAction("Carrito", new { mensaje = "No hay suficiente stock para algunos productos." });
+                        }
+                    }
+                }
+
+                // Vaciar el carrito después de la compra
+                _carrito.CarritoProductos.Clear();
+
+                return RedirectToAction("CompraFinalizada");
+            }
+            return RedirectToAction("Carrito", new { mensaje = "Tu carrito está vacío." });
+        }
+
+        // Acción para mostrar que la compra fue finalizada
+        public IActionResult CompraFinalizada()
+        {
+            return View("~/Views/Productos/CompraFinalizada.cshtml");
         }
     }
 }
