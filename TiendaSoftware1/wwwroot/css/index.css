@@ -1,3 +1,90 @@
+/* Aislar el carrusel con un contenedor único */
+#carousel-container {
+    width: 100%;
+    margin: 20px auto;
+    padding: 0;
+    position: relative;
+    display: flex;
+    justify-content: center; /* Centra los elementos dentro del contenedor */
+}
+
+/* Estilo del carrusel */
+.carousel {
+    margin-top: 20px;
+    border-radius: 5px !important;
+    width: 100%; /* El carrusel ocupa el 100% del ancho disponible */
+    height: 400px; /* Ajusta la altura del carrusel */
+    position: relative;
+    overflow: hidden; /* Oculta las partes que desbordan el contenedor */
+}
+
+    /* Asegurar que las imágenes se ajusten correctamente */
+    .carousel .slides {
+        display: flex;
+        transition: transform 1s ease-in-out; /* Aumentar la transición para que sea más suave */
+        width: 300%; /* Ajustado para que las imágenes se muestren correctamente en tres slides */
+    }
+
+    .carousel .slide {
+        width: 33.333%; /* Cada imagen ocupa un 33.33% del ancho del carrusel */
+        flex-shrink: 0; /* Esto evita que las imágenes se compriman */
+    }
+
+    /* Imágenes del carrusel ajustadas al 100% del contenedor */
+    .carousel img {
+        width: 100%; /* Ancho ajustado al 100% */
+        height: 400px; /* Ajuste la altura a 400px */
+        object-fit: cover; /* Asegura que las imágenes llenen el espacio sin distorsionarse */
+        border-radius: 10px;
+    }
+
+    /* Puntos de navegación (indicadores) */
+    .carousel .dots {
+        text-align: center;
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10; /* Asegura que los puntos estén por encima de las imágenes */
+    }
+
+    .carousel .dot {
+        height: 10px;
+        width: 10px;
+        margin: 0 5px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.3s;
+        cursor: pointer;
+    }
+
+        .carousel .dot.active {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+    /* Flechas de navegación (anterior y siguiente) dentro del contenedor */
+    .carousel .nav-buttons {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        z-index: 20; /* Asegura que las flechas estén por encima de las imágenes */
+    }
+
+    .carousel .prev,
+    .carousel .next {
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+/* Estilos generales para la página */
 #main-container {
     max-width: 900px;
     margin: 0 auto;
@@ -49,76 +136,15 @@
     transform: translateY(-5px);
 }
 
-/* Agregar espacio entre los productos */
-.product-card {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    margin-bottom: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-    .product-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .product-card img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 10px;
-        transition: all 0.3s ease;
-    }
-
-        .product-card img:hover {
-            transform: scale(1.05);
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-    .product-card .price {
-        color: #2b5a4a;
-        font-weight: bold;
-        font-size: 18px;
-        margin-top: 10px;
-    }
-
-    .product-card .button {
-        background-color: #4CAF50; /* Cambiado a verde */
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 15px;
-        font-size: 16px;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-        .product-card .button:hover {
-            background-color: #45a049;
-            transform: translateY(-2px);
-        }
-
-/* Responsividad */
-@media (max-width: 1200px) {
-    .game {
-        flex: 1 0 30%;
-    }
-}
-
+/* Responsividad para pantallas más pequeñas */
 @media (max-width: 768px) {
-    .game {
-        flex: 1 0 45%;
+    .carousel {
+        height: 250px; /* Ajusta la altura para pantallas pequeñas */
     }
 }
 
 @media (max-width: 480px) {
-    .game {
-        flex: 1 0 100%;
-    }
-
-    #main-container {
-        padding: 10px;
+    .carousel {
+        height: 200px; /* Ajusta la altura aún más para pantallas más pequeñas */
     }
 }
