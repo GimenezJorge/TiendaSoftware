@@ -1,7 +1,6 @@
 /* Aislar el carrusel con un contenedor único */
 #carousel-container {
     width: 100%;
-    max-width: 800px; /* Tamaño máximo del carrusel en pantallas grandes */
     margin: 20px auto;
     padding: 0;
     position: relative;
@@ -14,8 +13,7 @@
     margin-top: 20px;
     border-radius: 5px !important;
     width: 100%; /* El carrusel ocupa el 100% del ancho disponible */
-    max-width: 800px; /* Tamaño máximo ajustado */
-    height: 350px; /* Tamaño fijo para pantallas grandes */
+    height: 400px; /* Ajusta la altura del carrusel */
     position: relative;
     overflow: hidden; /* Oculta las partes que desbordan el contenedor */
 }
@@ -32,10 +30,10 @@
         flex-shrink: 0; /* Esto evita que las imágenes se compriman */
     }
 
-    /* Imágenes del carrusel ajustadas al 30% del contenedor */
+    /* Imágenes del carrusel ajustadas al 100% del contenedor */
     .carousel img {
-        width: 30%; /* Ancho ajustado al 30% */
-        height: 30%; /* Altura ajustada al 30% */
+        width: 100%; /* Ancho ajustado al 100% */
+        height: 400px; /* Ajuste la altura a 400px */
         object-fit: cover; /* Asegura que las imágenes llenen el espacio sin distorsionarse */
         border-radius: 10px;
     }
@@ -139,30 +137,14 @@
 }
 
 /* Responsividad para pantallas más pequeñas */
-@media (max-width: 1920px) {
-    .carousel {
-        max-width: 800px; /* Tamaño máximo de carrusel en pantallas grandes */
-        height: 350px; /* Mantiene el tamaño en pantallas grandes */
-    }
-}
-
-@media (max-width: 1080px) {
-    .carousel {
-        max-width: 700px; /* Reduce el tamaño en pantallas más pequeñas */
-        height: 300px; /* Ajusta la altura */
-    }
-}
-
 @media (max-width: 768px) {
     .carousel {
-        max-width: 600px; /* Reduce el tamaño aún más */
-        height: 250px; /* Ajusta la altura */
+        height: 250px; /* Ajusta la altura para pantallas pequeñas */
     }
 }
 
 @media (max-width: 480px) {
     .carousel {
-        max-width: 100%; /* El carrusel ocupa todo el ancho disponible */
-        height: 200px; /* Ajusta la altura */
+        height: 200px; /* Ajusta la altura aún más para pantallas más pequeñas */
     }
 }
