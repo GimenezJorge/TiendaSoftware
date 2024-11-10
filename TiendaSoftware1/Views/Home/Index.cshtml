@@ -9,23 +9,77 @@
 </head>
 
 <body>
-    <!-- Dentro de Index.cshtml -->
-    <div class="carousel">
-        <div class="slides">
-            <img src="/assets/imagen1.png" class="active">
-            <img src="/assets/imagen2.png">
-            <img src="/assets/imagen3.png">
-        </div>
-        <div class="dots">
-            <span class="dot active" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
+    <!-- Contenedor único para el carrusel con tamaño responsivo -->
+    <div id="carousel-container" style="max-width: 100%; max-height: 200px; overflow: hidden; margin: 20px auto; text-align: center;">
+        <div class="carousel" style="width: 100%; height: 100%; position: relative; overflow: hidden; margin: 0 auto;">
+            <!-- Contenedor para las diapositivas del carrusel -->
+            <div class="slides" style="display: flex; transition: transform 1s ease-in-out; width: 100%;" id="slides">
+                <!-- Slide 1 con su imagen -->
+                <div class="slide" style="flex-shrink: 0; width: 100%; display: flex; justify-content: center; align-items: center;">
+                    <img src="/assets/imagen1.png" alt="Imagen 1" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <!-- Slide 2 con su imagen -->
+                <div class="slide" style="flex-shrink: 0; width: 100%; display: flex; justify-content: center; align-items: center;">
+                    <img src="/assets/imagen2.png" alt="Imagen 2" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <!-- Slide 3 con su imagen -->
+                <div class="slide" style="flex-shrink: 0; width: 100%; display: flex; justify-content: center; align-items: center;">
+                    <img src="/assets/imagen3.png" alt="Imagen 3" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+
+            <!-- Flechas para navegar entre las imágenes -->
+            <button class="prev" onclick="moveSlide(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px; font-size: 24px; cursor: pointer; z-index: 10;">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px; font-size: 24px; cursor: pointer; z-index: 10;">&#10095;</button>
+
+            <!-- Indicadores de las diapositivas (puntos de navegación) -->
+            <div class="dots" style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 20; display: flex; justify-content: center;">
+                <span class="dot active" onclick="currentSlide(0)" style="height: 15px; width: 15px; margin: 0 8px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: inline-block;"></span>
+                <span class="dot" onclick="currentSlide(1)" style="height: 15px; width: 15px; margin: 0 8px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: inline-block;"></span>
+                <span class="dot" onclick="currentSlide(2)" style="height: 15px; width: 15px; margin: 0 8px; background-color: rgba(255, 255, 255, 0.7); border-radius: 50%; display: inline-block;"></span>
+            </div>
         </div>
     </div>
 
     <!-- Enlace al archivo JavaScript -->
-    <script src="/js/carousel.js"></script>
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+        const slideContainer = document.querySelector('#slides');
 
+        // Función para mostrar la imagen seleccionada en el carrusel
+        function showSlide(index) {
+            slideIndex = (index + totalSlides) % totalSlides;
+            const offset = -slideIndex * 100; // 100% de ancho por slide
+            slideContainer.style.transform = `translateX(${offset}%)`;
+
+            // Actualizar los puntos de navegación
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[slideIndex].classList.add('active');
+        }
+
+        // Cambiar la imagen mostrada cuando se hace clic en los puntos
+        function currentSlide(index) {
+            showSlide(index);
+        }
+
+        // Mover el carrusel con las flechas
+        function moveSlide(direction) {
+            showSlide(slideIndex + direction);
+        }
+
+        // Inicialización sin retraso, muestra la primera imagen
+        showSlide(slideIndex);
+
+        // Cambio automático cada 8 segundos
+        setInterval(() => {
+            showSlide(slideIndex + 1);
+        }, 7000);
+    </script>
+
+    <!-- Contenido de productos -->
     <div class="seccion">
         <div id="main-container" class="container">
             <div class="row">
@@ -77,19 +131,17 @@
     }
 
     <script>
-    setTimeout(function () {
-        var successMessage = document.getElementById('success-message');
-        if (successMessage) {
-            successMessage.style.transition = "opacity 1s ease";
-            successMessage.style.opacity = "0";
+        setTimeout(function () {
+            var successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                successMessage.style.transition = "opacity 1s ease";
+                successMessage.style.opacity = "0";
 
-            // Eliminar el mensaje del DOM después de la transición
-            setTimeout(function () {
-                successMessage.remove();
-            }, 1000); // 1 segundo de transición
-        }
-    }, 5000); // 5 segundos antes de comenzar a desvanecer
-</script>
-
+                // Eliminar el mensaje del DOM después de la transición
+                setTimeout(function () {
+                    successMessage.remove();
+                }, 1000); // 1 segundo de transición
+            }
+        }, 5000); // 5 segundos antes de comenzar a desvanecer
+    </script>
 </body>
-<!-- fusion -->
