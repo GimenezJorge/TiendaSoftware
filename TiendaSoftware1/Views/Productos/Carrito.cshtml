@@ -1,4 +1,4 @@
-﻿@model TiendaSoftware1.Models.Carrito
+@model TiendaSoftware1.Models.Carrito
 
 <!DOCTYPE html>
 <html lang="es">
@@ -41,7 +41,7 @@
                         <!-- Botón para quitar del carrito -->
                         <form action="@Url.Action("QuitarDelCarrito", "Carrito")" method="post">
                             <input type="hidden" name="productoId" value="@carritoProducto.ProductoId" />
-                            <button type="submit" class="btn-quitar">Quitar del Carrito</button>
+                            <button type="submit" class="btn">Quitar del Carrito</button>
                         </form>
                     </div>
                 }
@@ -58,6 +58,12 @@
         <div class="pdf-button">
             <a href="@Url.Action("GenerarPDF", "Carrito")" class="pdf-link">Descargar PDF</a>
         </div>
+
+        <!-- Botón para finalizar compra -->
+        <form action="@Url.Action("FinalizarCompra", "Carrito")" method="post">
+            <button type="submit" class="btn btn-primary">Finalizar compra</button>
+        </form>
+
     </div>
 </body>
 </html>

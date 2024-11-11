@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +17,14 @@ namespace TiendaSoftware1
 
             // Agregar controladores y vistas
             services.AddControllersWithViews();
+
+            // Configuración de sesiones
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // Duración de la sesión
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -35,6 +43,9 @@ namespace TiendaSoftware1
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            // Habilitar el uso de sesiones
+            app.UseSession();
 
             app.UseAuthorization();
 
