@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using TiendaSoftware1.Models;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
