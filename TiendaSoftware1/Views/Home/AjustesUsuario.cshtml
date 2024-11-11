@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TiendaSoftware1.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Ajuste Usuario";
+}
+
+<head>
+    <!-- Enlace al archivo CSS -->
+    <link href="~/css/AjustesUsuario.css" rel="stylesheet" />
+</head>
+
+<h1 class="titulo">Mi usuario</h1>
+
+<div class="usuario-container">
+    @foreach (var item in Model)
+    {
+        <div class="usuario-item">
+            <div class="usuario-detalle">
+                <strong>Nombre:</strong> @Html.DisplayFor(modelItem => item.Nombre)
+            </div>
+            <div class="usuario-detalle">
+                <strong>Email:</strong> @Html.DisplayFor(modelItem => item.Email)
+            </div>
+            <div class="usuario-acciones">
+                <a asp-action="DeleteUsuario" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                <a asp-action="EditUsuario" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Editar</a>
+            </div>
+            <hr /> <!-- Separador opcional -->
+        </div>
+    }
+</div>
