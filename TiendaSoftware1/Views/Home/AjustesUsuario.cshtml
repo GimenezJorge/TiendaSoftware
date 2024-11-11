@@ -4,37 +4,28 @@
     ViewData["Title"] = "Ajuste Usuario";
 }
 
-<h1 style="text-align:center; justify-content:center;">Mi usuario</h1>
+<head>
+    <!-- Enlace al archivo CSS -->
+    <link href="~/css/AjustesUsuario.css" rel="stylesheet" />
+</head>
 
+<h1 class="titulo">Mi usuario</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.First().Id)</th>
-            <th>@Html.DisplayNameFor(model => model.First().Nombre)</th>
-            <th>@Html.DisplayNameFor(model => model.First().Email)</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
-                <td>@Html.DisplayFor(modelItem => item.Email)</td>
-                <td>
-                    <a asp-action="DeleteUsuario" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Eliminar</a>
-                    <a asp-action="EditUsuario" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Editar</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<!-- Estilos CSS opcionales -->
-<style>
-    .btn {
-        margin-right: 5px; /* Espacio entre los botones */
+<div class="usuario-container">
+    @foreach (var item in Model)
+    {
+        <div class="usuario-item">
+            <div class="usuario-detalle">
+                <strong>Nombre:</strong> @Html.DisplayFor(modelItem => item.Nombre)
+            </div>
+            <div class="usuario-detalle">
+                <strong>Email:</strong> @Html.DisplayFor(modelItem => item.Email)
+            </div>
+            <div class="usuario-acciones">
+                <a asp-action="DeleteUsuario" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                <a asp-action="EditUsuario" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Editar</a>
+            </div>
+            <hr /> <!-- Separador opcional -->
+        </div>
     }
-</style>
+</div>
