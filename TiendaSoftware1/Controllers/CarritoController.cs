@@ -85,6 +85,16 @@ namespace TiendaSoftware1.Controllers
                 PdfWriter.GetInstance(document, ms).CloseStream = false;
                 document.Open();
 
+                // Agregar la imagen en la parte superior del PDF
+                string imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/assets/logo_la_fortaleza.gif");
+                if (System.IO.File.Exists(imagePath))
+                {
+                    Image logo = Image.GetInstance(imagePath);
+                    logo.Alignment = Element.ALIGN_CENTER;
+                    logo.ScaleToFit(250f, 250f); // Ajusta el tamaño de la imagen según sea necesario
+                    document.Add(logo);
+                }
+
                 // Título del reporte
                 document.Add(new Paragraph("Carrito de Compras"));
                 document.Add(new Paragraph(" ")); // Espacio en blanco
