@@ -148,3 +148,19 @@
         height: 200px; /* Ajusta la altura aún más para pantallas más pequeñas */
     }
 }
+
+/* Estilo para el mensaje de éxito */
+#success-message {
+    background-color: #d4edda; /* Fondo verde claro */
+    color: #155724; /* Texto verde oscuro */
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #c3e6cb; /* Borde verde claro */
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    transition: opacity 1s ease; /* Transición de desvanecimiento */
+}
