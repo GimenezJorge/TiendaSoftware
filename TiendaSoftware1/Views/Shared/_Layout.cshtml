@@ -52,11 +52,18 @@
                                     </div>
                                 </div>
                             
-
-                            <strong class="nombre-usuario">@Context.Session.GetString("nombre")</strong>
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle">@Context.Session.GetString("nombre")</button>
+                                        <div class="dropdown-content">
+                                            <a class="nav-link" asp-action="AjustesUsuario" asp-controller="Home">Ajustes</a>
+                                            <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
+                                        </div>
+                                    </div>
+                              /*
                             <div class="logout">
                                 <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
                             </div>
+                            */
                         }
                         else
                         {
