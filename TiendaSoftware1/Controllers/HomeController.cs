@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -33,7 +32,7 @@ namespace TiendaSoftware1.Controllers
         // Crear usuario (Create) - GET
         public IActionResult CreateUsuario()
         {
-            return View(); // Devolver el formulario de creaci髇
+            return View(); // Devolver el formulario de creaci贸n
         }
 
         // Crear usuario (Create) - POST
@@ -41,29 +40,27 @@ namespace TiendaSoftware1.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult CreateUsuario(Usuario usuario)
         {
-            // Verificar si el correo electr髇ico ya existe
+            // Verificar si el correo electr贸nico ya existe
             if (db.Usuarios.Any(x => x.Email == usuario.Email))
             {
                 ViewBag.Notification = "Este usuario ya existe";
-                return View(usuario); // Volver a mostrar el formulario con los datos ingresados
+                return View(); // Si existe, recargar el formulario de creaci贸n
             }
             else
             {
-                // Asignar rol predeterminado (Usuario)
+                // Asignar rol predeterminado
                 usuario.RolId = 1;
 
-                // Agregar el nuevo usuario a la base de datos
                 db.Usuarios.Add(usuario);
                 db.SaveChanges();
 
-                // Mensaje de 閤ito
-                TempData["SuccessMessage"] = "Usuario creado con 閤ito";
+                // Mensaje de 茅xito
+                TempData["SuccessMessage"] = "Usuario creado con 茅xito";
                 return RedirectToAction("GestionUsuarios"); // Redirigir a la lista de usuarios
             }
         }
 
         // Leer usuarios (Read)
-       
         public IActionResult GestionUsuarios()
         {
             return View(db.Usuarios.ToList());
@@ -131,7 +128,7 @@ namespace TiendaSoftware1.Controllers
                 }
             }
 
-            // Si hay errores de validaci髇, volver a la vista de edici髇
+            // Si hay errores de validaci贸n, volver a la vista de edici贸n
             return View(usuario);
             }
 
@@ -168,10 +165,10 @@ namespace TiendaSoftware1.Controllers
                 return NotFound();
             }
 
-            // Verificar si el usuario eliminado es el usuario en sesi髇
+            // Verificar si el usuario eliminado es el usuario en sesi贸n
             if (HttpContext.Session.GetString("email") == usuario.Email)
             {
-                // Cerrar sesi髇 eliminando las variables de sesi髇
+                // Cerrar sesi贸n eliminando las variables de sesi贸n
                 HttpContext.Session.Remove("email");
                 HttpContext.Session.Remove("clave");
 
@@ -196,7 +193,7 @@ namespace TiendaSoftware1.Controllers
             return db.Usuarios.Any(e => e.Id == id);
         }
 
-        // M閠odo auxiliar para verificar si el usuario existe
+        // M茅todo auxiliar para verificar si el usuario existe
 
         public IActionResult SignUp()
         {
@@ -206,7 +203,7 @@ namespace TiendaSoftware1.Controllers
         [HttpPost]
         public IActionResult SignUp(Usuario usuario)
         {
-            // Verificar si el correo electr髇ico ya existe
+            // Verificar si el correo electr贸nico ya existe
             if (db.Usuarios.Any(x => x.Email == usuario.Email))
             {
                 ViewBag.Notification = "Esta cuenta ya existe";
@@ -214,23 +211,24 @@ namespace TiendaSoftware1.Controllers
             }
             else
             {
-                // Asignar el rol predeterminado (por ejemplo, RolId = 1 para 'Usuario')
-                usuario.RolId = 1;
+                // Asignar el rol de "usuario normal" por defecto
+                usuario.RolId = 1; // Aseguramos que 1 sea el RolId para "usuario normal"
 
                 db.Usuarios.Add(usuario);
                 db.SaveChanges();
 
-                // Guardar informaci髇 de sesi髇
+                // Guardar informaci贸n de sesi贸n
                 HttpContext.Session.SetString("email", usuario.Email.ToString());
                 HttpContext.Session.SetString("clave", usuario.Password.ToString());
                 HttpContext.Session.SetString("nombre", usuario.Nombre.ToString());
 
-                // Almacenar el mensaje de 閤ito en TempData
-                TempData["SuccessMessage"] = "Cuenta creada con 閤ito";
+                // Almacenar el mensaje de 茅xito en TempData
+                TempData["SuccessMessage"] = "Cuenta creada con 茅xito";
 
                 return RedirectToAction("Index", "Home");
             }
         }
+
 
         [HttpGet]
         public ActionResult LogIn()
@@ -242,24 +240,28 @@ namespace TiendaSoftware1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogIn(Usuario usuario)
         {
-            var checkLogin = db.Usuarios.Where(x => x.Email.Equals(usuario.Email)
-            && x.Password.Equals(usuario.Password))
+            var checkLogin = db.Usuarios
+                .Where(x => x.Email.Equals(usuario.Email) && x.Password.Equals(usuario.Password))
                 .FirstOrDefault();
 
             if (checkLogin != null)
             {
-                HttpContext.Session.SetString("email", checkLogin.Email);   
-                HttpContext.Session.SetString("nombre", checkLogin.Nombre); 
+                // Guardamos los datos en la sesi贸n
+                HttpContext.Session.SetString("email", checkLogin.Email);
+                HttpContext.Session.SetString("nombre", checkLogin.Nombre);
                 HttpContext.Session.SetString("clave", checkLogin.Password);
-                HttpContext.Session.SetString("rol_id", checkLogin.RolId.ToString());
+                HttpContext.Session.SetString("roleId", checkLogin.RolId.ToString()); // Guardamos el rol
+
                 return RedirectToAction("Index", "Home");
             }
             else
             {
                 ViewBag.Notification = "Email o clave incorrectas";
             }
+
             return View();
         }
+
 
 
         public ActionResult Logout()
@@ -317,10 +319,8 @@ namespace TiendaSoftware1.Controllers
 
 
         //---------------PRODUCTOS
-        
         public IActionResult GestionProductos()
         {
-
             return View(db.Productos.ToList());
         }
 
@@ -407,7 +407,7 @@ namespace TiendaSoftware1.Controllers
                 return NotFound();
             }
 
-            return View(producto); // Mostrar la vista de confirmaci髇
+            return View(producto); // Mostrar la vista de confirmaci贸n
         }
 
         // Eliminar producto (Delete) - POST
@@ -427,7 +427,7 @@ namespace TiendaSoftware1.Controllers
             return RedirectToAction("GestionProductos"); // Redirigir a la lista de productos
         }
 
-        // M閠odo auxiliar para verificar si un producto existe
+        // M茅todo auxiliar para verificar si un producto existe
         private bool ProductoExists(int id)
         {
             return db.Productos.Any(e => e.Id == id);

@@ -47,5 +47,20 @@ namespace TiendaSoftware1.Controllers
             var productos = _context.Productos.Where(p => p.Tipo == "accesorios").ToList();
             return View(productos);
         }
+
+        // Ruta para productos de Juegos Usados
+        public IActionResult juegos_usado()
+        {
+            var productos = _context.Productos.Where(p => p.Tipo == "juegos_usado").ToList();
+            return View(productos);
+        }
+        
+        // Ruta para productos de Consolas Usadas
+        public IActionResult consolas_usado()
+        {
+            var productos = _context.Productos.Where(p => p.Tipo == "consolas_usado").ToList();
+            return View(productos);
+        }
+        
     }
 }

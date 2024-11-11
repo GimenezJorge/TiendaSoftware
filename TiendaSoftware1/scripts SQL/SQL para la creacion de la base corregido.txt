@@ -1,0 +1,66 @@
+use bdg3
+
+
+CREATE TABLE [dbo].[carrito_productos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[carrito_id] [int] NOT NULL,
+	[producto_id] [int] NOT NULL,
+	[cantidad] [int] NOT NULL
+	)
+
+CREATE TABLE [dbo].[carritos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[usuario_id] [int] NOT NULL,
+	[fecha_creacion] [datetime] NULL,
+	)
+CREATE TABLE [dbo].[metodos_pago](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](100) NOT NULL,
+)
+CREATE TABLE [dbo].[pedido_productos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[pedido_id] [int] NOT NULL,
+	[producto_id] [int] NOT NULL,
+	[cantidad] [int] NOT NULL,
+	[precio_unitario] [decimal](10, 2) NOT NULL,
+	[precio_total]  AS ([cantidad]*[precio_unitario]) 
+)
+CREATE TABLE [dbo].[pedidos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[usuario_id] [int] NOT NULL,
+	[fecha_pedido] [datetime] NULL,
+	[total] [decimal](10, 2) NOT NULL,
+	[estado] [varchar](50) NULL,
+)
+CREATE TABLE [dbo].[pedidos_metodos_pago](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[pedido_id] [int] NOT NULL,
+	[metodo_pago_id] [int] NOT NULL
+)
+CREATE TABLE [dbo].[productos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](150) NOT NULL,
+	[descripcion] [text] NULL,
+	[precio] [decimal](10, 2) NOT NULL,
+	[stock] [int] NOT NULL,
+	[fecha_lanzamiento] [date] NULL,
+	[tipo] [varchar](50) NULL,
+	[imagen_url] [varchar](255) NULL
+)
+CREATE TABLE [dbo].[roles](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [nvarchar](50) NOT NULL,
+)
+CREATE TABLE [dbo].[usuario_detalles](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[usuario_id] [int] NOT NULL,
+	[telefono] [varchar](20) NULL,
+	[direccion] [varchar](255) NULL
+)
+CREATE TABLE [dbo].[usuarios](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](100) NOT NULL,
+	[email] [varchar](150) NOT NULL,
+	[password] [varchar](255) NOT NULL,
+	[rol_id] [int] NOT NULL
+)

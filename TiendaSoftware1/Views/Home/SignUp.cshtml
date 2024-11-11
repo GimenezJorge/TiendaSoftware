@@ -5,7 +5,7 @@
 }
 
 @section Styles {
-    <link rel="stylesheet" href="~/css/form.css" /> 
+    <link rel="stylesheet" href="~/css/form.css" />
 }
 
 <h1>Sign Up</h1>
@@ -14,49 +14,46 @@
 <hr />
 <div class="row">
     <div class="col-md-4"></div>
-        <div id="main-container" class="container">
-            <div class="form-wrapper">
-                <form asp-action="SignUp">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div id="main-container" class="container">
+        <div class="form-wrapper">
+            <form asp-action="SignUp">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="Nombre" class="control-label"></label>
+                    <input asp-for="Nombre" class="form-control" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" type="password" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" type="password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="ReClave" class="control-label"></label>
-                <input asp-for="ReClave" class="form-control" type="password" />
-                <span asp-validation-for="ReClave" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="ReClave" class="control-label"></label>
+                    <input asp-for="ReClave" class="form-control" type="password" />
+                    <span asp-validation-for="ReClave" class="text-danger"></span>
+                </div>
 
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
 
-            <!-- Mensajes de notificación si hay algún problema (opcional) -->
-            <div class="form-group text-danger">
-                <label>@ViewBag.Notification</label>
-            </div>
+                <!-- Mensajes de notificación si hay algún problema (opcional) -->
+                <div class="form-group text-danger">
+                    <label>@ViewBag.Notification</label>
+                </div>
             </form>
         </div>
-        </div>
-</div>
-<div>
-    <a asp-action="Index">Back to List</a>
+    </div>
 </div>
 
 @section Scripts {
