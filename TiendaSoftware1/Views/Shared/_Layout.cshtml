@@ -24,49 +24,58 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto d-flex align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Comunidad">Comunidad</a>
+                            <a class="nav-link" href="/Home/Comunidad">Comunidad</a>
                         </li>
                     </ul>
 
-                    <!-- Los elementos adicionales que no pertenecen a la lista se colocan fuera del <ul> -->
-                    @if (Context.Session.GetString("email") != null)
-                    {
-                        // Recuperamos el roleId desde la sesión
-                        var roleId = Context.Session.GetString("roleId");
-
-                        // Si el roleId es "2" (administrador), mostramos el menú de administración
-                        if (roleId == "2")
+                    <!-- Aquí agregamos la información del usuario y el carrito -->
+                    <div class="d-flex align-items-center ms-auto">
+                        <!-- Menú de Admin si es un administrador -->
+                        @if (Context.Session.GetString("roleId") == "2")
                         {
-                            <div class="dropdown">
-                                <button class="dropdown-toggle">Admin</button>
-                                <div class="dropdown-content">
-                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionUsuarios">Gestionar Usuarios</a>
-                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionProductos">Gestionar Productos</a>
-                                </div>
+                            <div class="dropdown me-3">
+                                <button class="dropdown-toggle" type="button" id="adminMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Admin
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="adminMenuButton">
+                                    <li><a class="dropdown-item" href="/Home/GestionUsuarios">Gestionar Usuarios</a></li>
+                                    <li><a class="dropdown-item" href="/Home/GestionProductos">Gestionar Productos</a></li>
+                                </ul>
                             </div>
                         }
 
-                        <!-- Mostrar el nombre del usuario -->
-                        <strong class="nombre-usuario">@Context.Session.GetString("nombre")</strong>
-
-                        <!-- Botón de logout -->
-                        <div class="logout">
-                            <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
-                        </div>
-                    }
-                    else
-                    {
                         <!-- Mostrar las opciones de Login y SignUp si el usuario no está autenticado -->
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="SignUp">SignUp</a>
-                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="LogIn">Login</a>
-                    }
+                        @if (Context.Session.GetString("email") == null)
+                        {
+                            <a class="nav-link" href="/Home/SignUp">SignUp</a>
+                            <a class="nav-link" href="/Home/LogIn">Login</a>
+                        }
+                        else
+                        {
+                            <!-- Mostrar el nombre del usuario -->
+                            <strong class="nombre-usuario me-3">@Context.Session.GetString("nombre")</strong>
+
+                            <!-- Botón de logout -->
+                            <div class="logout me-3">
+                                <a class="nav-link" href="/Home/Logout">Salir</a>
+                            </div>
+                        }
+
+                        <!-- Botón del carrito -->
+                        <div id="cart-icon" class="ms-3">
+                            <a href="/Carrito/Carrito" class="nav-link">
+                                <img src="~/assets/carrito.png" alt="Carrito" style="width: 40px; height: 40px; cursor: pointer;">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

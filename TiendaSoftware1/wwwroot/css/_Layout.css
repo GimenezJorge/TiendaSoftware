@@ -38,7 +38,6 @@ body {
 
     .nav-link:hover {
         color: gold !important;
-        text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
     }
 
 .nav-item {
@@ -49,7 +48,6 @@ body {
 .nombre-usuario {
     margin-top: 10px;
     color: white;
-    text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
     font-size: 20px;
 }
 
@@ -91,7 +89,6 @@ footer {
     background-color: #DC3545;
     position: relative;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    text-shadow: -3px 2px 0px rgba(0, 0, 0, 0.5);
     margin-top: 10px;
     margin-right: 30px;
 }
