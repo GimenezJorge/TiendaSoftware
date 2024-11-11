@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TiendaSoftware1.Models.Producto>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Productos Xbox</title>
+</head>
+<body>
+    <h1>Productos Xbox</h1>
+
+    @if (!Model.Any())
+    {
+        <p>No hay productos disponibles en esta categoría.</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var producto in Model)
+            {
+                <li>
+                    <h2>@producto.Nombre</h2>
+                    <p>@producto.Descripcion</p>
+                    <p>Precio: @producto.Precio</p>
+                    <p>Stock: @producto.Stock</p>
+
+                    <img src="@Url.Content(producto.ImagenUrl)" alt="@producto.Nombre" />
+
+                    <!-- Botón para agregar al carrito -->
+                    <button type="button" onclick="agregarAlCarrito(@producto.Id)">Agregar al Carrito</button>
+                    <input type="number" id="cantidad_@producto.Id" value="1" min="1" max="@producto.Stock" style="width: 50px; margin-left: 10px;" />
+                </li>
+            }
+        </ul>
+    }
+
+    <script>
+        function agregarAlCarrito(productoId) {
+            var cantidad = document.getElementById("cantidad_" + productoId).value;
+            window.location.href = '@Url.Action("AgregarAlCarrito", "Carrito")' + '?id=' + productoId + '&cantidad=' + cantidad;
+        }
+    </script>
+</body>
+</html>
