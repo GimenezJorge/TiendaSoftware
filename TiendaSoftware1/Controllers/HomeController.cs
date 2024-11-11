@@ -266,7 +266,7 @@ namespace TiendaSoftware1.Controllers
             return View(producto);
         }
 
-        public IActionResult Privacy()
+        public IActionResult SobreNosotros()
         {
             return View();
         }
