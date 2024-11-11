@@ -28,6 +28,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Comunidad">Comunidad</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="SobreNosotros">Sobre Nosotros</a>
                         </li>
                     </ul>
 
@@ -46,7 +47,21 @@
                                     <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionUsuarios">Gestionar Usuarios</a>
                                     <a class="nav-link" asp-area="" asp-controller="Home" asp-action="GestionProductos">Gestionar Productos</a>
                                 </div>
+                            
+                                    <div class="dropdown">
+                                        <button class="dropdown-toggle">@Context.Session.GetString("nombre")</button>
+                                        <div class="dropdown-content">
+                                            <a class="nav-link" asp-action="AjustesUsuario" asp-controller="Home">Ajustes</a>
+                                            <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
+                                        </div>
+                                    </div>
+                              /*
+                            <div class="logout">
+                                <a class="nav-link" asp-action="Logout" asp-controller="Home">Salir</a>
+
+
                             </div>
+                            */
                         }
 
                         <!-- Mostrar el nombre del usuario -->
@@ -77,7 +92,7 @@
 
     <footer>
         <div class="container">
-            &copy; 2024 - TiendaSoftware1 - <a asp-area="" asp-controller="Home" asp-action="Privacy" style="color: white;">Sobre Nosotros</a>
+            &copy; 2024 - La Fortaleza &copy;
         </div>
     </footer>
 

@@ -1,0 +1,39 @@
+
+/* Centra la información en la pantalla */
+.usuario-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; 
+    justify-content: center; 
+   
+    padding: 20px;
+}
+
+/* Estilo de cada bloque de usuario */
+.usuario-item {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    width: 100%;
+    max-width: 600px;
+    font-size: 1.2em; 
+}
+
+/* Estilo de los detalles de cada usuario */
+.usuario-detalle {
+    margin-bottom: 15px;
+}
+
+/* Estilo de los botones */
+.usuario-acciones .btn {
+    margin-right: 10px; 
+}
+
+/* Estilo del título */
+.titulo {
+    text-align: center;
+    font-size: 4em; 
+    margin-bottom: 20px;
+}

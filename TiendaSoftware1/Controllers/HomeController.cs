@@ -97,9 +97,23 @@ namespace TiendaSoftware1.Controllers
             {
                 try
                 {
-                    db.Usuarios.Update(usuario);
+                    // Obtener el usuario original de la base de datos
+                    var usuarioExistente = await db.Usuarios.FindAsync(id);
+                    if (usuarioExistente == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Actualizar los campos que se pueden modificar
+                    usuarioExistente.Nombre = usuario.Nombre;
+                    usuarioExistente.Email = usuario.Email;
+                    usuarioExistente.Password = usuario.Password;
+
+                    // Guardar los cambios en la base de datos
+                    db.Usuarios.Update(usuarioExistente);
                     await db.SaveChangesAsync();
-                    return RedirectToAction("GestionUsuarios"); // Redirige a la lista de usuarios
+
+                    return RedirectToAction("GestionUsuarios");
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -116,14 +130,14 @@ namespace TiendaSoftware1.Controllers
 
             // Si hay errores de validación, volver a la vista de edición
             return View(usuario);
-        }
+            }
 
 
 
 
 
-        // Eliminar usuario (Delete) - GET
-        [HttpGet]
+            // Eliminar usuario (Delete) - GET
+            [HttpGet]
         public async Task<IActionResult> DeleteUsuario(int? id)
         {
             if (id == null)
@@ -268,10 +282,34 @@ namespace TiendaSoftware1.Controllers
             return View(producto);
         }
 
-        public IActionResult Privacy()
+        public IActionResult SobreNosotros()
         {
             return View();
         }
+
+        public IActionResult AjustesUsuario()
+        {
+            // return View(db.Usuarios.ToList());
+
+            string emailUsuarioLogueado = HttpContext.Session.GetString("email");
+
+            if (string.IsNullOrEmpty(emailUsuarioLogueado))
+            {
+                return RedirectToAction("Login");
+            }
+
+            var usuario = db.Usuarios.FirstOrDefault(u => u.Email == emailUsuarioLogueado);
+
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            // Pasar el usuario en una lista para cumplir con el tipo de modelo esperado.
+            return View(new List<Usuario> { usuario });
+        }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
