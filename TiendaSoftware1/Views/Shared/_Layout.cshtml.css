@@ -85,31 +85,3 @@ button.accept-policy {
     .pdf-link:hover {
         background-color: #218838;
     }
-
-/* Estilo para las opciones dentro del menú de administración */
-.dropdown-menu .dropdown-item {
-    font-size: 14px; /* Tamaño de la fuente */
-    color: #212529; /* Color de las letras (más oscuro) */
-}
-
-    /* Estilo para las opciones cuando se pasa el ratón */
-    .dropdown-menu .dropdown-item:hover {
-        background-color: #007bff; /* Fondo azul al pasar el ratón */
-        color: white; /* Color blanco para el texto cuando se pasa el ratón */
-    }
-
-    /* Estilo para la opción activa */
-    .dropdown-menu .dropdown-item.active {
-        background-color: #1b6ec2; /* Fondo azul más oscuro */
-        color: white; /* Color blanco para el texto activo */
-    }
-
-/* Estilo para las letras de las opciones en la barra de navegación */
-.navbar-nav .nav-link {
-    color: #212529; /* Color oscuro para las letras de las opciones en la barra de navegación */
-}
-
-    /* Estilo cuando se pasa el ratón sobre los enlaces */
-    .navbar-nav .nav-link:hover {
-        color: #007bff; /* Color azul al pasar el ratón */
-    }

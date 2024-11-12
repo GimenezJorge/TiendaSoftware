@@ -132,14 +132,6 @@ namespace TiendaSoftware1.Controllers
         [HttpPost]
         public IActionResult FinalizarCompra()
         {
-            // Verifica si el usuario no está logueado
-            if (!User.Identity.IsAuthenticated)
-            {
-                ViewBag.Mensaje = "Para finalizar la compra, debes estar registrado e iniciar sesión.";
-                return View("~/Views/Productos/Carrito.cshtml", _carrito);  // Se muestra el mensaje sin redirigir
-            }
-
-            // Si está logueado, procesa la compra como estaba en tu código
             if (_carrito.CarritoProductos.Any())
             {
                 foreach (var carritoProducto in _carrito.CarritoProductos)
